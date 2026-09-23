@@ -33,7 +33,7 @@ export const metadata = {
     title: "Nana Amoah | Gospel Artist",
     description:
       "Music, faith and purpose. Explore Nana Amoah's music, events and ministry.",
-    url: "https://nanaamoah.com",
+    url: "https://nanaamoah.vercel.app",
     siteName: "Nana Amoah",
     type: "website",
   },

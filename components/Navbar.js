@@ -7,11 +7,13 @@ import { ArrowUpRight, Menu, Music2, X } from "lucide-react";
 import {
   FaInstagram,
   FaFacebookF,
+  FaXTwitter,
+  FaTiktok,
   FaYoutube,
   FaSpotify,
   FaApple,
   FaDeezer,
-} from "react-icons/fa";
+} from "react-icons/fa6";
 
 const navItems = [
   { label: "Music", href: "/music" },
@@ -247,6 +249,7 @@ export default function Navbar() {
             <div className="flex items-center gap-5 text-white/30">
               <a
                 href="https://www.instagram.com/nanaamoahh/"
+                target="_blank"
                 aria-label="Instagram"
                 className="transition-colors duration-300 hover:text-white"
               >
@@ -254,19 +257,30 @@ export default function Navbar() {
               </a>
 
               <a
-                href="https://www.youtube.com/@nanaamoahh"
-                aria-label="YouTube"
+                href="https://x.com/nanaamoahh_"
+                target="_blank"
+                aria-label="X"
                 className="transition-colors duration-300 hover:text-white"
               >
-                <FaYoutube size={17} />
+                <FaXTwitter size={17} />
               </a>
 
               <a
                 href="https://facebook.com/nanakwadwo.amoah"
+                target="_blank"
                 aria-label="Facebook"
                 className="transition-colors duration-300 hover:text-white"
               >
                 <FaFacebookF size={15} />
+              </a>
+
+              <a
+                href="https://www.tiktok.com/@nanaamoahh"
+                target="_blank"
+                aria-label="TikTok"
+                className="transition-colors duration-300 hover:text-white"
+              >
+                <FaTiktok size={15} />
               </a>
             </div>
             <span className="text-[9px] uppercase tracking-[0.3em] text-white/20">
