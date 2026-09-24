@@ -1,20 +1,18 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, CalendarDays, Dome, MapPin, Music2 } from "lucide-react";
-
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import { ArrowUpRight, CalendarDays, Dome, MapPin, Music2, Watch } from "lucide-react";
 
 const upcomingEvents = [
   {
-    date: "3",
-    month: "OCT",
+    date: "1",
+    month: "NOV",
     year: "2026",
-    title: "Revival",
-    venue: "Harvest Chapel Int. Aruka Temple",
-    location: "Haatso",
-    type: "Light Service",
-    image: "/images/events/event-01.jpg",
+    title: "Praise Waiting Live",
+    venue: "Victory Bible Church, Higher Heights Sanctuary",
+    location: "Ashale Botwe",
+    time: "4:30pm",
+    type: "Worship Session",
+    image: "/images/events/praise-waiting-live.jpg",
   },
 //   {
 //     date: "—",
@@ -23,6 +21,7 @@ const upcomingEvents = [
 //     title: "Live in Concert",
 //     venue: "To Be Announced",
 //     location: "Ghana",
+//     time: "_",
 //     type: "Concert",
 //     image: "/images/events/event-02.jpg",
 //   },
@@ -33,6 +32,7 @@ const upcomingEvents = [
 //     title: "Worship Gathering",
 //     venue: "To Be Announced",
 //     location: "Ghana",
+//     time: "_",
 //     type: "Ministry",
 //     image: "/images/events/event-03.jpg",
 //   },
@@ -54,7 +54,6 @@ const pastEvents = [
 export default function EventsPage() {
   return (
     <main className="min-h-screen bg-[#050505] text-white">
-      <Navbar />
 
       {/* =========================================================
           HERO
@@ -122,12 +121,12 @@ export default function EventsPage() {
               >
                 {/* Event Image */}
                 <div className="relative aspect-[4/3] overflow-hidden">
-                  {/* <Image
+                  <Image
                     src={event.image}
                     alt={event.title}
                     fill
                     className="object-cover transition duration-700 group-hover:scale-[1.03]"
-                  /> */}
+                  />
 
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
 
@@ -165,15 +164,20 @@ export default function EventsPage() {
                       <MapPin size={13} />
                       <span>{event.location}</span>
                     </div>
+
+                    <div className="flex items-center gap-2">
+                      <Watch size={13} />
+                      <span>{event.time}</span>
+                    </div>
                   </div>
 
-                  <button
+                  {/* <button
                     type="button"
                     className="mt-7 flex items-center gap-2 text-xs text-white/55 transition hover:text-white"
                   >
                     Event Details
                     <ArrowUpRight size={13} />
-                  </button>
+                  </button> */}
                 </div>
               </article>
             ))}
@@ -184,14 +188,14 @@ export default function EventsPage() {
       {/* =========================================================
           FEATURED EVENT
       ========================================================== */}
-      {/* <section className="px-6 pb-24 lg:px-10">
+      <section className="px-6 pb-24 lg:px-10">
         <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] border border-white/[0.08] bg-white/[0.025]">
           <div className="relative min-h-[520px]">
             <Image
-              src="/images/events/featured-event.jpg"
+              src="/images/events/praise-waiting-live.jpg"
               alt="Nana Amoah performing live"
               fill
-              className="object-cover object-center"
+              className="object-cover object-top"
             />
 
             <div className="absolute inset-0 bg-gradient-to-r from-black via-black/55 to-transparent" />
@@ -203,7 +207,7 @@ export default function EventsPage() {
                 </p>
 
                 <h2 className="mt-4 text-4xl font-light leading-tight tracking-tight sm:text-5xl">
-                  A night of worship.
+                  Praise Waiting Live
                 </h2>
 
                 <p className="mt-5 max-w-xl text-sm leading-7 text-white/45">
@@ -222,7 +226,7 @@ export default function EventsPage() {
             </div>
           </div>
         </div>
-      </section> */}
+      </section>
 
       {/* =========================================================
           PAST EVENTS
@@ -300,8 +304,6 @@ export default function EventsPage() {
           </Link>
         </div>
       </section>
-
-      <Footer />
     </main>
   );
 }

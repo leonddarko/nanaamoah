@@ -1,9 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import { ArrowUpRight, Menu, Music2, X } from "lucide-react";
 
 import {
   FaInstagram,
@@ -23,55 +22,23 @@ const navItems = [
   { label: "Contact", href: "/contact" },
 ];
 
-const socials = [
-  {
-    label: "Instagram",
-    href: "https://www.instagram.com/nanaamoahh/",
-    icon: FaInstagram,
-  },
-  {
-    label: "X",
-    href: "https://x.com/nanaamoahh_",
-    icon: FaXTwitter,
-  },
-  {
-    label: "Facebook",
-    href: "https://facebook.com/nanakwadwo.amoah",
-    icon: FaFacebookF,
-  },
-  {
-    label: "TikTok",
-    href: "https://www.tiktok.com/@nanaamoahh",
-    icon: FaTiktok,
-  },
-];
-
-const platforms = [
-  { label: "YouTube", icon: FaYoutube },
-  { label: "Spotify", icon: FaSpotify },
-  { label: "Apple Music", icon: FaApple },
-  { label: "Deezer", icon: FaDeezer },
-];
-
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 24);
+      setScrolled(window.scrollY > 20);
     };
 
-    handleScroll();
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("scroll", handleScroll);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
-  // Prevent background scrolling while mobile menu is open.
+  // Prevent background scrolling while mobile menu is open
   useEffect(() => {
     document.body.style.overflow = mobileMenuOpen ? "hidden" : "";
 
@@ -97,94 +64,65 @@ export default function Navbar() {
         <div
           className={`mx-auto flex w-full items-center justify-between transition-all duration-500 ${
             scrolled
-              ? "max-w-6xl rounded-full border border-white/10 bg-black/60 px-5 py-3 shadow-[0_12px_40px_rgba(0,0,0,0.3)] backdrop-blur-2xl sm:px-6"
+              ? "max-w-6xl rounded-full border border-white/10 bg-black/60 px-5 py-3 shadow-2xl shadow-black/20 backdrop-blur-2xl sm:px-6"
               : "max-w-7xl px-6 py-6 lg:px-10"
           }`}
         >
-          {/* =====================================================
-              BRAND
-          ====================================================== */}
+          {/* Logo */}
           <Link
             href="/"
             onClick={closeMobileMenu}
             className="group relative z-[60] flex items-center gap-3"
           >
             <div
-              className={`relative flex shrink-0 items-center justify-center overflow-hidden rounded-full border border-white/10 bg-white/[0.04] transition-all duration-500 ${
-                scrolled ? "h-10 w-10" : "h-12 w-12"
+              className={`flex items-center justify-center rounded-full border border-white/15 bg-white/[0.04] backdrop-blur-xl transition-all duration-500 ${
+                scrolled ? "h-8 w-8" : "h-9 w-9"
               }`}
             >
-              <Image
-                src="/images/wefaintnot-full-logo-tp.png"
-                alt="WeFaintNot"
-                fill
-                sizes="36px"
-                className="object-contain p-2 opacity-90 transition duration-300 group-hover:opacity-100"
-              />
+              <Music2 size={scrolled ? 14 : 16} strokeWidth={1.5} />
             </div>
 
-            <span className="text-sm font-semibold tracking-[0.2em] text-white">
+            <span className="text-sm font-semibold tracking-[0.2em]">
               NANA AMOAH
             </span>
           </Link>
 
-          {/* =====================================================
-              DESKTOP NAVIGATION
-          ====================================================== */}
+          {/* Desktop Navigation */}
           <nav className="hidden items-center gap-8 md:flex">
             {navItems.map((item) => (
               <Link
                 key={item.label}
                 href={item.href}
-                className="relative py-2 text-sm text-white/45 transition-colors duration-300 hover:text-white"
+                className="text-sm text-white/50 transition-colors duration-300 hover:text-white"
               >
                 {item.label}
-
-                <span className="absolute bottom-0 left-1/2 h-px w-0 -translate-x-1/2 bg-white transition-all duration-300 group-hover:w-full" />
               </Link>
             ))}
           </nav>
 
-          {/* =====================================================
-              DESKTOP LISTEN CTA
-          ====================================================== */}
+          {/* Desktop Listen Button */}
           <Link
             href="/music"
-            className="group hidden items-center gap-3 rounded-full border border-white/10 bg-white/[0.06] px-5 py-2.5 text-xs font-medium tracking-wide text-white backdrop-blur-xl transition-all duration-300 hover:border-white/20 hover:bg-white/10 md:flex"
+            className="hidden items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-5 py-2.5 text-xs font-medium tracking-wide text-white backdrop-blur-xl transition-all duration-300 hover:border-white/25 hover:bg-white/10 sm:flex"
           >
-            <span>Listen Now</span>
-
-            <span className="flex items-center gap-1.5 border-l border-white/10 pl-3 text-white/50 transition-colors group-hover:text-white">
-              <FaYoutube size={12} />
-              <FaSpotify size={12} />
-              <FaApple size={12} />
-              <FaDeezer size={13} />
-            </span>
-
-            <ArrowUpRight
-              size={13}
-              className="text-white/30 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-white"
-            />
+            Listen Now
+            <ArrowUpRight size={14} />
           </Link>
 
-          {/* =====================================================
-              MOBILE MENU BUTTON
-          ====================================================== */}
+          {/* Mobile Menu Button */}
           <button
             type="button"
             aria-label={
-              mobileMenuOpen
-                ? "Close navigation menu"
-                : "Open navigation menu"
+              mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"
             }
             aria-expanded={mobileMenuOpen}
             onClick={() => setMobileMenuOpen((prev) => !prev)}
-            className="relative z-[60] flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-white backdrop-blur-xl transition hover:border-white/20 hover:bg-white/10 md:hidden"
+            className="relative z-[60] flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-white backdrop-blur-xl transition hover:bg-white/10 md:hidden"
           >
             {mobileMenuOpen ? (
-              <X size={19} strokeWidth={1.4} />
+              <X size={20} strokeWidth={1.5} />
             ) : (
-              <Menu size={19} strokeWidth={1.4} />
+              <Menu size={20} strokeWidth={1.5} />
             )}
           </button>
         </div>
@@ -200,26 +138,30 @@ export default function Navbar() {
             : "pointer-events-none opacity-0"
         }`}
       >
-        {/* Ambient Lighting */}
+        {/* Ambient lighting */}
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
+          {/* Purple */}
           <div
             className={`absolute -left-32 top-10 h-80 w-80 rounded-full bg-purple-700/20 blur-[130px] transition-transform duration-1000 ${
               mobileMenuOpen ? "scale-100" : "scale-75"
             }`}
           />
 
+          {/* Blue */}
           <div
             className={`absolute -right-32 top-1/3 h-96 w-96 rounded-full bg-blue-600/15 blur-[140px] transition-transform duration-1000 ${
               mobileMenuOpen ? "scale-100" : "scale-75"
             }`}
           />
 
+          {/* Green */}
           <div
             className={`absolute bottom-0 left-1/4 h-72 w-72 rounded-full bg-emerald-500/10 blur-[130px] transition-transform duration-1000 ${
               mobileMenuOpen ? "scale-100" : "scale-75"
             }`}
           />
 
+          {/* Gold */}
           <div
             className={`absolute bottom-[-100px] right-[-80px] h-80 w-80 rounded-full bg-amber-500/10 blur-[130px] transition-transform duration-1000 ${
               mobileMenuOpen ? "scale-100" : "scale-75"
@@ -227,12 +169,12 @@ export default function Navbar() {
           />
         </div>
 
-        {/* Subtle Grid */}
+        {/* Subtle grid */}
         <div className="pointer-events-none absolute inset-0 opacity-[0.025] [background-image:linear-gradient(rgba(255,255,255,.8)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.8)_1px,transparent_1px)] [background-size:70px_70px]" />
 
-        {/* Mobile Content */}
+        {/* Menu content */}
         <div className="relative flex h-full flex-col px-7 pb-8 pt-32">
-          {/* Mobile Header */}
+          {/* Label */}
           <div
             className={`mb-10 flex items-center gap-3 transition-all delay-100 duration-500 ${
               mobileMenuOpen
@@ -247,7 +189,7 @@ export default function Navbar() {
             </span>
           </div>
 
-          {/* Navigation Links */}
+          {/* Navigation links */}
           <nav className="flex flex-col">
             {navItems.map((item, index) => (
               <Link
@@ -263,20 +205,20 @@ export default function Navbar() {
                   transitionDelay: `${150 + index * 70}ms`,
                 }}
               >
-                <span className="text-4xl font-light tracking-tight text-white/85 transition-colors group-hover:text-white">
+                <span className="text-4xl font-light tracking-tight text-white/85 transition group-hover:text-white">
                   {item.label}
                 </span>
 
                 <ArrowUpRight
                   size={20}
-                  strokeWidth={1.4}
-                  className="text-white/20 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-white"
+                  strokeWidth={1.5}
+                  className="text-white/25 transition group-hover:text-white"
                 />
               </Link>
             ))}
           </nav>
 
-          {/* Mobile Listen CTA */}
+          {/* Listen CTA */}
           <div
             className={`mt-8 transition-all delay-[450ms] duration-500 ${
               mobileMenuOpen
@@ -287,43 +229,60 @@ export default function Navbar() {
             <Link
               href="/music"
               onClick={closeMobileMenu}
-              className="group flex w-full items-center justify-center gap-3 rounded-full bg-white py-4 text-sm font-semibold text-black transition hover:bg-white/90"
+              className="flex w-full items-center justify-center gap-3 rounded-full bg-white py-4 text-sm font-semibold text-black transition hover:bg-white/90"
             >
-              Listen Now
-
-              <span className="flex items-center gap-2 border-l border-black/10 pl-3">
-                {platforms.map(({ label, icon: Icon }) => (
-                  <Icon
-                    key={label}
-                    size={label === "Deezer" ? 14 : 13}
-                  />
-                ))}
+              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-black text-white">
+                <Music2 size={13} strokeWidth={1.5} />
               </span>
-
-              <ArrowUpRight
-                size={14}
-                className="text-black/40 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
-              />
+              Listen Now
+              <span className="flex items-center gap-2 border-l border-black/10 pl-3">
+                <FaYoutube size={13} />
+                <FaSpotify size={13} />
+                <FaApple size={13} />
+                <FaDeezer size={14} />
+              </span>
             </Link>
           </div>
 
-          {/* Bottom Socials */}
+          {/* Bottom */}
           <div className="mt-auto flex items-center justify-between">
             <div className="flex items-center gap-5 text-white/30">
-              {socials.map(({ label, href, icon: Icon }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={label}
-                  className="transition-colors duration-300 hover:text-white"
-                >
-                  <Icon size={label === "X" ? 17 : 15} />
-                </a>
-              ))}
-            </div>
+              <a
+                href="https://www.instagram.com/nanaamoahh/"
+                target="_blank"
+                aria-label="Instagram"
+                className="transition-colors duration-300 hover:text-white"
+              >
+                <FaInstagram size={16} />
+              </a>
 
+              <a
+                href="https://x.com/nanaamoahh_"
+                target="_blank"
+                aria-label="X"
+                className="transition-colors duration-300 hover:text-white"
+              >
+                <FaXTwitter size={17} />
+              </a>
+
+              <a
+                href="https://facebook.com/nanakwadwo.amoah"
+                target="_blank"
+                aria-label="Facebook"
+                className="transition-colors duration-300 hover:text-white"
+              >
+                <FaFacebookF size={15} />
+              </a>
+
+              <a
+                href="https://www.tiktok.com/@nanaamoahh"
+                target="_blank"
+                aria-label="TikTok"
+                className="transition-colors duration-300 hover:text-white"
+              >
+                <FaTiktok size={15} />
+              </a>
+            </div>
             <span className="text-[9px] uppercase tracking-[0.3em] text-white/20">
               Faith • Music • Purpose
             </span>

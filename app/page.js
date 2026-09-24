@@ -17,13 +17,9 @@ import {
   FaDeezer,
 } from "react-icons/fa6";
 
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
-
 export default function Home() {
   return (
     <main className="min-h-screen bg-[#050505] text-white">
-      <Navbar />
 
       {/* =========================================================
           HERO
@@ -425,8 +421,6 @@ export default function Home() {
 
         </div>
       </section>
-
-      <Footer />
     </main>
   );
 }
