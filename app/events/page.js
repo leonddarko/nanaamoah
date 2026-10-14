@@ -1,7 +1,16 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, CalendarDays, Dome, MapPin, Music2, Watch } from "lucide-react";
-
+import {
+  ArrowUpRight,
+  CalendarDays,
+  Dome,
+  MailBadge,
+  MapPin,
+  MicSignal,
+  Play,
+  Watch,
+} from "lucide-react";
+import { FaYoutube } from "react-icons/fa6";
 const upcomingEvents = [
   {
     date: "1",
@@ -13,48 +22,74 @@ const upcomingEvents = [
     time: "4:30pm",
     type: "Worship Session",
     image: "/images/events/praise-waiting-live.jpg",
+    registerlink: "https://",
+    livestreamUrl: "https://www.youtube.com/@nanaamoahh/streams",
   },
-//   {
-//     date: "—",
-//     month: "—",
-//     year: "2027",
-//     title: "Live in Concert",
-//     venue: "To Be Announced",
-//     location: "Ghana",
-//     time: "_",
-//     type: "Concert",
-//     image: "/images/events/event-02.jpg",
-//   },
-//   {
-//     date: "—",
-//     month: "—",
-//     year: "2027",
-//     title: "Worship Gathering",
-//     venue: "To Be Announced",
-//     location: "Ghana",
-//     time: "_",
-//     type: "Ministry",
-//     image: "/images/events/event-03.jpg",
-//   },
+  //   {
+  //     date: "—",
+  //     month: "—",
+  //     year: "2027",
+  //     title: "Live in Concert",
+  //     venue: "To Be Announced",
+  //     location: "Ghana",
+  //     time: "_",
+  //     type: "Concert",
+  //     image: "/images/events/event-02.jpg",
+  //   },
+  //   {
+  //     date: "—",
+  //     month: "—",
+  //     year: "2027",
+  //     title: "Worship Gathering",
+  //     venue: "To Be Announced",
+  //     location: "Ghana",
+  //     time: "_",
+  //     type: "Ministry",
+  //     image: "/images/events/event-03.jpg",
+  //   },
 ];
 
-const pastEvents = [
+const praiseWaitingPrograms = [
   {
-    year: "2026",
-    title: "Praise Waiting August Edition 2026",
-    location: "Accra, Ghana",
+    title: "Praise Waiting — September Edition 2026",
+    description: "A Praise Waiting worship programme.",
+    href: "https://www.youtube.com/watch?v=B4R8Oe_Kdww",
+    image: "/images/events/praise-waiting-september-2026.png",
   },
-//   {
-//     year: "2025",
-//     title: "Gospel Celebration",
-//     location: "Accra, Ghana",
-//   },
+  {
+    title: "Praise Waiting — August Edition 2026",
+    description: "A Praise Waiting programme",
+    href: "https://www.youtube.com/watch?v=RyBrsfcRXVE",
+    image: "/images/events/praise-waiting-august-2026.png",
+  },
+];
+
+const ministrationArchive = {
+  title: "Minister Nana Amoah — Ministrations",
+  description:
+    "Revisit selected worship sessions, praise moments and ministrations.",
+  // href: "https://www.youtube.com/results?search_query=Nana+Amoah+Gospel+Ministration+Worship",
+  href: "https://www.youtube.com/@nanaamoahh/videos",
+};
+
+const pastEvents = [
+  // Keep your existing event records and add these optional fields:
+  {
+    title: "Past Live Events",
+    year: "2025 - 2026",
+    location: "Accra, Ghana",
+    photos: [
+      "/images/events/event-audience-01.jpg",
+      "/images/events/event-audience-03.jpg",
+    ],
+    // livestreamUrl: "https://your-confirmed-recording-link",
+    youtubeUrl: "https://www.youtube.com/@nanaamoahh/videos",
+  },
 ];
 
 export default function EventsPage() {
   return (
     <main className="min-h-screen bg-[#050505] text-white">
-
       {/* =========================================================
           HERO
       ========================================================== */}
@@ -90,7 +125,6 @@ export default function EventsPage() {
           </div>
         </div>
       </section>
-
       {/* =========================================================
           UPCOMING EVENTS
       ========================================================== */}
@@ -117,7 +151,7 @@ export default function EventsPage() {
             {upcomingEvents.map((event) => (
               <article
                 key={`${event.title}-${event.year}`}
-                className="group overflow-hidden rounded-[1.75rem] border border-white/[0.08] bg-white/[0.025] transition duration-500 hover:border-white/[0.14]"
+                className="group overflow-hidden rounded-[1.75rem] border border-white/[0.08] bg-white/[0.025] transition duration-500 hover:border-white/[0.15]"
               >
                 {/* Event Image */}
                 <div className="relative aspect-[4/3] overflow-hidden">
@@ -171,20 +205,38 @@ export default function EventsPage() {
                     </div>
                   </div>
 
-                  {/* <button
-                    type="button"
-                    className="mt-7 flex items-center gap-2 text-xs text-white/55 transition hover:text-white"
-                  >
-                    Event Details
-                    <ArrowUpRight size={13} />
-                  </button> */}
+                  <div className="flex justify-around items-center gap-2">
+                    {event.livestreamUrl && (
+                      <Link href={event.livestreamUrl} target="_blank">
+                        <button
+                          type="button"
+                          className="mt-7 flex items-center gap-2 text-xs text-white/55 transition hover:text-white cursor-pointer"
+                        >
+                          <MicSignal
+                            className="text-red-800 animate-pulse"
+                            size={13}
+                          />
+                          Live
+                        </button>
+                      </Link>
+                    )}
+
+                    {event.registerlink && (
+                      <button
+                        type="button"
+                        className="mt-7 flex items-center gap-2 text-xs text-white/55 transition hover:text-white cursor-pointer"
+                      >
+                        Register
+                        <MailBadge size={13} />
+                      </button>
+                    )}
+                  </div>
                 </div>
               </article>
             ))}
           </div>
         </div>
       </section>
-
       {/* =========================================================
           FEATURED EVENT
       ========================================================== */}
@@ -229,11 +281,17 @@ export default function EventsPage() {
       </section>
 
       {/* =========================================================
-          PAST EVENTS
+      PAST EVENTS — MINISTRY ARCHIVE
       ========================================================== */}
-      <section className="border-t border-white/[0.07]">
-        <div className="mx-auto max-w-7xl px-6 py-24 lg:px-10">
-          <div className="grid gap-12 lg:grid-cols-[0.7fr_1.3fr]">
+      <section
+        id="past-events"
+        className="relative overflow-hidden border-t border-white/[0.07]"
+      >
+        <div className="pointer-events-none absolute -left-40 top-20 h-96 w-96 rounded-full bg-purple-700/[0.08] blur-[140px]" />
+
+        <div className="relative mx-auto max-w-7xl px-6 py-24 lg:px-10">
+          {/* Section heading */}
+          <div className="mb-14 grid gap-6 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
             <div>
               <p className="text-[10px] uppercase tracking-[0.3em] text-white/25">
                 The archive
@@ -242,44 +300,221 @@ export default function EventsPage() {
               <h2 className="mt-4 text-4xl font-light tracking-tight sm:text-5xl">
                 Past Events
               </h2>
-
-              <p className="mt-5 max-w-sm text-sm leading-7 text-white/30">
-                A look back at moments shared through music, worship and
-                ministry.
-              </p>
             </div>
 
-            <div className="divide-y divide-white/[0.07] border-y border-white/[0.07]">
-              {pastEvents.map((event) => (
-                <div
-                  key={`${event.title}-${event.year}`}
-                  className="flex items-center justify-between gap-6 py-6"
-                >
-                  <div>
-                    <p className="text-xs text-white/25">{event.year}</p>
+            <p className="max-w-xl text-sm leading-7 text-white/35 lg:justify-self-end">
+              Moments of worship, shared faith and ministry. Revisit selected
+              gatherings through audience photographs and available recordings.
+            </p>
+          </div>
 
-                    <h3 className="mt-1 text-base font-light text-white/80">
+          {/* Event archive */}
+          <div className="space-y-14">
+            {pastEvents.map((event) => (
+              <article
+                key={`${event.title}-${event.year}`}
+                className="overflow-hidden rounded-[1.75rem] border border-white/[0.08] bg-white/[0.02]"
+              >
+                <div className="grid lg:grid-cols-[0.75fr_1.25fr]">
+                  {/* Event information */}
+                  <div className="flex flex-col justify-center p-7 sm:p-9">
+                    <p className="text-[10px] uppercase tracking-[0.25em] text-white/30">
+                      {event.year} {event.location ? `• ${event.location}` : ""}
+                    </p>
+
+                    <h3 className="mt-4 text-2xl font-light tracking-tight sm:text-3xl">
                       {event.title}
                     </h3>
+
+                    {event.description && (
+                      <p className="mt-4 text-sm leading-7 text-white/35">
+                        {event.description}
+                      </p>
+                    )}
+
+                    {/* Recording links */}
+                    {(event.livestreamUrl || event.youtubeUrl) && (
+                      <div className="mt-7 flex flex-wrap gap-3">
+                        {event.livestreamUrl && (
+                          <a
+                            href={event.livestreamUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-3 text-xs font-medium text-black transition hover:bg-white/90"
+                          >
+                            <Play size={13} fill="currentColor" />
+                            Watch Recording
+                            <ArrowUpRight size={13} />
+                          </a>
+                        )}
+
+                        {event.youtubeUrl && (
+                          <a
+                            href={event.youtubeUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-3 text-xs text-white/60 transition hover:border-white/25 hover:text-white"
+                          >
+                            <FaYoutube size={15} />
+                            Watch on YouTube
+                            <ArrowUpRight size={13} />
+                          </a>
+                        )}
+                      </div>
+                    )}
                   </div>
 
-                  <div className="flex items-center gap-2 text-xs text-white/25">
-                    <MapPin size={13} />
-                    {event.location}
-                  </div>
+                  {/* Selected audience photographs */}
+                  {event.photos?.length > 0 ? (
+                    <div className="grid grid-cols-2 gap-2 p-3 sm:grid-cols-3">
+                      {event.photos.slice(0, 3).map((photo, index) => (
+                        <div
+                          key={photo}
+                          className={`relative overflow-hidden rounded-xl bg-white/[0.04] ${
+                            index === 0
+                              ? "col-span-2 aspect-[5/3] sm:col-span-2 sm:aspect-auto sm:min-h-[300px]"
+                              : "aspect-[4/5] sm:min-h-[300px]"
+                          }`}
+                        >
+                          <img
+                            src={photo}
+                            alt={`${event.title} — audience and event moment ${index + 1}`}
+                            loading="lazy"
+                            className="absolute inset-0 h-full w-full object-cover transition duration-700 hover:scale-[1.04]"
+                          />
+                          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="flex min-h-56 items-center justify-center border-t border-white/[0.06] bg-white/[0.015] p-8 text-center lg:border-l lg:border-t-0">
+                      <p className="text-xs leading-6 text-white/25">
+                        Event photographs will be added here.
+                      </p>
+                    </div>
+                  )}
                 </div>
+              </article>
+            ))}
+
+            {pastEvents.length === 0 && (
+              <p className="rounded-2xl border border-white/[0.08] p-8 text-sm text-white/35">
+                Past event highlights will be added soon.
+              </p>
+            )}
+          </div>
+
+          {/* Praise Waiting archive */}
+          <div className="mt-24">
+            <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
+              <div>
+                <p className="text-[10px] uppercase tracking-[0.3em] text-white/25">
+                  Praise Waiting
+                </p>
+
+                <h3 className="mt-4 text-3xl font-light tracking-tight sm:text-4xl">
+                  Set apart for worship and praise.
+                </h3>
+
+                <p className="mt-4 max-w-xl text-sm leading-7 text-white/35">
+                  Explore selected editions of Nana Amoah’s Praise Waiting
+                  programme and revisit the messages and music shared through
+                  it.
+                </p>
+              </div>
+
+              <a
+                href="https://www.youtube.com/@nanaamoahh"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 self-start text-xs text-white/50 transition hover:text-white sm:self-auto"
+              >
+                Visit YouTube Channel
+                <ArrowUpRight size={14} />
+              </a>
+            </div>
+
+            <div className="mt-9 grid gap-6 sm:grid-cols-2">
+              {praiseWaitingPrograms.map((program) => (
+                <a
+                  key={program.title}
+                  href={program.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="group"
+                >
+                  <div className="relative aspect-video overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.03]">
+                    <img
+                      src={program.image}
+                      alt={`${program.title} artwork`}
+                      loading="lazy"
+                      className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.035]"
+                    />
+
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
+
+                    <div className="absolute bottom-4 left-4 flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-black/30 text-white backdrop-blur-xl">
+                      <Play size={14} fill="currentColor" />
+                    </div>
+
+                    <span className="absolute right-4 top-4 rounded-full border border-white/15 bg-black/30 px-3 py-1.5 text-[9px] uppercase tracking-[0.2em] text-white/70 backdrop-blur-xl">
+                      YouTube
+                    </span>
+                  </div>
+
+                  <h4 className="mt-5 text-lg font-medium transition group-hover:text-white/75">
+                    {program.title}
+                  </h4>
+
+                  <p className="mt-2 text-sm leading-6 text-white/35">
+                    {program.description}
+                  </p>
+
+                  <span className="mt-4 inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.2em] text-white/40 transition group-hover:text-white">
+                    Find programme
+                    <ArrowUpRight size={13} />
+                  </span>
+                </a>
               ))}
             </div>
           </div>
+
+          {/* Ministrations */}
+          <div className="mt-20 flex flex-col justify-between gap-6 rounded-[1.75rem] border border-white/[0.08] bg-yellow-900/[0.05] p-7 sm:flex-row sm:items-center sm:p-10">
+            <div className="max-w-2xl">
+              <p className="text-[10px] uppercase tracking-[0.3em] text-white/25">
+                Worship & ministry
+              </p>
+
+              <h3 className="mt-3 text-2xl font-light tracking-tight sm:text-3xl">
+                Minister Nana Amoah
+              </h3>
+
+              <p className="mt-3 text-sm leading-7 text-white/35">
+                Watch selected ministrations, worship sessions and praise
+                moments from previous gatherings.
+              </p>
+            </div>
+
+            <a
+              href={ministrationArchive.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full border border-white/15 px-5 py-3.5 text-xs text-white/75 transition hover:border-white/30 hover:bg-white/[0.05] hover:text-white"
+            >
+              <FaYoutube size={15} />
+              Explore Ministrations
+              <ArrowUpRight size={14} />
+            </a>
+          </div>
         </div>
       </section>
-
       {/* =========================================================
           BOOKING CTA
       ========================================================== */}
-      <section className="relative overflow-hidden border-t border-white/[0.07]">
+      <section className="relative overflow-hidden border-t border-white/[0.05]">
         <div className="pointer-events-none absolute -left-40 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-purple-600/10 blur-[150px]" />
-        <div className="pointer-events-none absolute -right-40 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-amber-500/10 blur-[150px]" />
+        <div className="pointer-events-none absolute -right-40 top-1/2 h-96 w-96 -translate-y-1/2 rounded-full bg-yellow-900/30 blur-[150px]" />
 
         <div className="relative mx-auto max-w-4xl px-6 py-28 text-center">
           <p className="text-[10px] uppercase tracking-[0.3em] text-white/25">

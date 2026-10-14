@@ -29,7 +29,7 @@ export default function AboutPage() {
             {/* Main heading */}
             <div>
               {/* WeFaintNot identity */}
-              <div className="mb-10 flex items-center gap-4">
+              {/* <div className="mb-10 flex items-center gap-4">
                 <div className="flex h-16 w-16 items-center justify-center rounded-full border border-white/10 bg-white/[0.035] ">
                   <img
                     src="/images/wefaintnot-logo.jpg"
@@ -45,7 +45,7 @@ export default function AboutPage() {
 
                   <div className="mt-2 h-px w-10 bg-white/20" />
                 </div>
-              </div>
+              </div> */}
 
               <div className="mb-7 flex items-center gap-3">
                 <span className="h-px w-10 bg-white/30" />

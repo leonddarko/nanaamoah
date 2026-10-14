@@ -16,6 +16,7 @@ import {
   FaApple,
   FaDeezer,
 } from "react-icons/fa6";
+import MinistryHighlights from "@/components/MinistryHighlights";
 
 export default function Home() {
   return (
@@ -48,7 +49,7 @@ export default function Home() {
             <div className="relative z-10 max-w-2xl">
 
               {/* WeFaintNot identity */}
-              <div className="mb-10 flex items-center gap-4">
+              {/* <div className="mb-10 flex items-center gap-4">
                 <div className="flex h-16 w-16 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] backdrop-blur-xl">
                   <img
                     src="/images/wefaintnot-logo.jpg"
@@ -64,7 +65,7 @@ export default function Home() {
 
                   <div className="mt-2 h-px w-12 bg-white/20" />
                 </div>
-              </div>
+              </div> */}
 
               {/* Eyebrow */}
               <div className="mb-6 flex items-center gap-3">
@@ -212,7 +213,7 @@ export default function Home() {
               {/* ===================================================
                   RELEASE CARD
               ==================================================== */}
-              <div className="absolute right-0 top-8 hidden w-56 rounded-3xl border border-white/10 bg-black/60 p-4 shadow-xl backdrop-blur-2xl sm:block lg:-right-10">
+              {/* <div className="absolute right-0 top-8 hidden w-56 rounded-3xl border border-white/10 bg-black/60 p-4 shadow-xl backdrop-blur-2xl sm:block lg:-right-10">
 
                 <div className="flex items-start gap-3">
 
@@ -235,12 +236,12 @@ export default function Home() {
                   </div>
 
                 </div>
-              </div>
+              </div> */}
 
               {/* ===================================================
                   WEFaintNot FLOATING MARK
               ==================================================== */}
-              <div className="absolute bottom-22 -left-1.5 hidden items-center gap-3 rounded-full border border-white/10 bg-black/50 px-4 py-2.5 backdrop-blur-2xl sm:flex lg:-left-5">
+              {/* <div className="absolute bottom-22 -left-1.5 hidden items-center gap-3 rounded-full border border-white/10 bg-black/50 px-4 py-2.5 backdrop-blur-2xl sm:flex lg:-left-5">
 
                 <img
                   src="/images/wefaintnot-logo.jpg"
@@ -258,7 +259,7 @@ export default function Home() {
                   </p>
                 </div>
 
-              </div>
+              </div> */}
 
               {/* Vertical label */}
               <div className="absolute -right-12 top-1/2 hidden -translate-y-1/2 rotate-90 text-[9px] uppercase tracking-[0.45em] text-white/25 xl:block">
@@ -276,6 +277,11 @@ export default function Home() {
 
         <div className="absolute bottom-0 left-0 h-px w-full bg-gradient-to-r from-transparent via-white/10 to-transparent" />
       </section>
+
+ {/* =========================================================
+          MINISTRY HIGHLIGHTS
+      ========================================================== */}
+      <MinistryHighlights />
 
       {/* =========================================================
           MINISTRY INTRODUCTION

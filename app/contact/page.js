@@ -7,6 +7,8 @@ import {
   MapPin,
   Phone,
   Send,
+  Download,
+  MessageCircle,
 } from "lucide-react";
 import {
   FaInstagram,
@@ -36,7 +38,6 @@ const ministryEngagements = [
 export default function ContactPage() {
   return (
     <main className="min-h-screen bg-[#050505] text-white">
-
       {/* =========================================================
           HERO
       ========================================================== */}
@@ -45,7 +46,7 @@ export default function ContactPage() {
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
           <div className="absolute -left-40 top-10 h-[520px] w-[520px] rounded-full bg-purple-700/10 blur-[160px]" />
           <div className="absolute right-[-180px] top-1/4 h-[560px] w-[560px] rounded-full bg-blue-600/10 blur-[170px]" />
-          <div className="absolute bottom-[-180px] left-1/3 h-[450px] w-[450px] rounded-full bg-amber-500/10 blur-[160px]" />
+          <div className="absolute bottom-[-180px] left-1/3 h-[450px] w-[450px] rounded-full bg-yellow-900/30 blur-[160px]" />
         </div>
 
         {/* Grid */}
@@ -56,16 +57,15 @@ export default function ContactPage() {
 
         <div className="relative mx-auto flex min-h-[72vh] w-full max-w-7xl items-end px-6 pb-20 pt-40 lg:px-10">
           <div className="grid w-full gap-14 lg:grid-cols-[1fr_.55fr] lg:items-end">
-
             {/* Main heading */}
             <div>
               {/* WeFaintNot identity */}
-              <div className="mb-10 flex items-center gap-4">
+              {/* <div className="mb-10 flex items-center gap-4">
                 <div className="flex h-16 w-16 items-center justify-center rounded-full border border-white/10 bg-white/[0.035]">
                   <img
                     src="/images/wefaintnot-logo.jpg"
                     alt="WeFaintNot"
-                    className="h-full w-full object-contain opacity-80 rounded-full"
+                    className="h-full w-full rounded-full object-contain opacity-80"
                   />
                 </div>
 
@@ -73,14 +73,12 @@ export default function ContactPage() {
                   <p className="text-[9px] uppercase tracking-[0.35em] text-white/30">
                     WeFaintNot Family
                   </p>
-
                   <div className="mt-2 h-px w-10 bg-white/20" />
                 </div>
-              </div>
+              </div> */}
 
               <div className="mb-7 flex items-center gap-3">
                 <span className="h-px w-10 bg-white/30" />
-
                 <span className="text-[10px] uppercase tracking-[0.35em] text-white/35">
                   Invitations & Enquiries
                 </span>
@@ -94,8 +92,46 @@ export default function ContactPage() {
 
               <p className="mt-9 max-w-2xl text-base leading-8 text-white/40 sm:text-lg">
                 We are honoured by every invitation extended to Minister Nana
-                Amoah. Share the details of your gathering and the team will
-                get back to you.
+                Amoah. Share the details of your gathering and the team will get
+                back to you.
+              </p>
+
+              {/* Contact actions */}
+              <div className="mt-9 flex flex-col items-start gap-3 sm:flex-row sm:flex-wrap">
+                <a
+                  href="/brochures/nana-amoah-invitation-booking-brochure.pdf"
+                  download
+                  className="inline-flex min-h-12 items-center justify-center gap-3 rounded-full bg-white px-6 py-3 text-xs font-medium text-black transition hover:bg-white/85"
+                >
+                  <Download size={16} />
+                  Download Brochure
+                </a>
+
+                <a
+                  href="https://wa.me/233547152345?text=Hello%2C%20I%27d%20like%20to%20make%20an%20invitation%20enquiry%20for%20Minister%20Nana%20Amoah."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-12 items-center justify-center gap-3 rounded-full border border-white/15 bg-green-300/[0.10] px-6 py-3 text-xs text-white/80 transition hover:border-white/30 hover:bg-green-300/[0.15]"
+                >
+                  <MessageCircle size={16} />
+                  WhatsApp · 054 715 2345
+                  <ArrowUpRight size={14} className="text-white/40" />
+                </a>
+
+                <a
+                  href="https://wa.me/233541358595?text=Hello%2C%20I%27d%20like%20to%20make%20an%20invitation%20enquiry%20for%20Minister%20Nana%20Amoah."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex min-h-12 items-center justify-center gap-3 rounded-full border border-white/15 bg-green-300/[0.10] px-6 py-3 text-xs text-white/80 transition hover:border-white/30 hover:bg-green-300/[0.15]"
+                >
+                  <MessageCircle size={16} />
+                  WhatsApp · 054 135 8595
+                  <ArrowUpRight size={14} className="text-white/40" />
+                </a>
+              </div>
+
+              <p className="mt-4 text-[10px] leading-5 text-white/25">
+                For bookings, event invitations and ministry enquiries.
               </p>
             </div>
 
@@ -124,9 +160,7 @@ export default function ContactPage() {
       ========================================================== */}
       <section className="border-t border-white/[0.07]">
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-10 lg:py-32">
-
           <div className="grid gap-14 lg:grid-cols-[.65fr_1.35fr] lg:items-start">
-
             <div>
               <p className="text-[10px] uppercase tracking-[0.35em] text-white/25">
                 Ministry Engagements
@@ -137,8 +171,8 @@ export default function ContactPage() {
               </h2>
 
               <p className="mt-5 max-w-sm text-sm leading-7 text-white/30">
-                Invitations are welcomed for gatherings where worship, the
-                Word and ministry are at the centre.
+                Invitations are welcomed for gatherings where worship, the Word
+                and ministry are at the centre.
               </p>
             </div>
 
@@ -158,357 +192,6 @@ export default function ContactPage() {
                 </div>
               ))}
             </div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* =========================================================
-          INVITATION FORM
-      ========================================================== */}
-      <section className="border-t border-white/[0.07] bg-[#070707]">
-        <div className="mx-auto grid max-w-7xl gap-16 px-6 py-24 lg:grid-cols-[.7fr_1.3fr] lg:px-10 lg:py-32">
-
-          {/* Information */}
-          <div>
-            <p className="text-[10px] uppercase tracking-[0.35em] text-white/25">
-              Official Invitation
-            </p>
-
-            <h2 className="mt-5 text-3xl font-light tracking-tight sm:text-4xl">
-              Tell us about the gathering.
-            </h2>
-
-            <p className="mt-6 max-w-sm text-sm leading-7 text-white/30">
-              Kindly provide the key details of your event so the ministry
-              team can properly review and coordinate the invitation.
-            </p>
-
-            {/* Requirements */}
-            <div className="mt-10 space-y-5 border-t border-white/[0.07] pt-8">
-
-              <div className="flex gap-4">
-                <CalendarDays
-                  size={16}
-                  strokeWidth={1.3}
-                  className="mt-0.5 shrink-0 text-white/35"
-                />
-
-                <div>
-                  <p className="text-[9px] uppercase tracking-[0.25em] text-white/20">
-                    Timing
-                  </p>
-
-                  <p className="mt-1 text-xs leading-5 text-white/45">
-                    Invitations should ideally be submitted at least one
-                    month before the event.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <MapPin
-                  size={16}
-                  strokeWidth={1.3}
-                  className="mt-0.5 shrink-0 text-white/35"
-                />
-
-                <div>
-                  <p className="text-[9px] uppercase tracking-[0.25em] text-white/20">
-                    Logistics
-                  </p>
-
-                  <p className="mt-1 text-xs leading-5 text-white/45">
-                    Transportation, accommodation where necessary, and
-                    hospitality should be considered for the minister and
-                    team.
-                  </p>
-                </div>
-              </div>
-
-              <div className="flex gap-4">
-                <Send
-                  size={16}
-                  strokeWidth={1.3}
-                  className="mt-0.5 shrink-0 text-white/35"
-                />
-
-                <div>
-                  <p className="text-[9px] uppercase tracking-[0.25em] text-white/20">
-                    Honorarium
-                  </p>
-
-                  <p className="mt-1 text-xs leading-5 text-white/45">
-                    Please include your intended honorarium and transportation
-                    budget in your communication.
-                  </p>
-                </div>
-              </div>
-
-            </div>
-          </div>
-
-          {/* Form */}
-          <div className="rounded-[2rem] border border-white/[0.08] bg-white/[0.025] p-7 sm:p-10 lg:p-12">
-
-            <div className="mb-10">
-              <p className="text-[10px] uppercase tracking-[0.3em] text-white/25">
-                Booking Request
-              </p>
-
-              <h2 className="mt-3 text-2xl font-light tracking-tight sm:text-3xl">
-                Event details
-              </h2>
-            </div>
-
-            <form className="space-y-7">
-
-              {/* Name + Organisation */}
-              <div className="grid gap-7 sm:grid-cols-2">
-
-                <div>
-                  <label
-                    htmlFor="name"
-                    className="mb-2 block text-[10px] uppercase tracking-[0.2em] text-white/25"
-                  >
-                    Your Name
-                  </label>
-
-                  <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    placeholder="Full name"
-                    required
-                    className="h-12 w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 text-sm text-white outline-none placeholder:text-white/20 transition focus:border-white/25 focus:bg-white/[0.05]"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="organisation"
-                    className="mb-2 block text-[10px] uppercase tracking-[0.2em] text-white/25"
-                  >
-                    Church / Organisation
-                  </label>
-
-                  <input
-                    id="organisation"
-                    name="organisation"
-                    type="text"
-                    placeholder="Organisation name"
-                    required
-                    className="h-12 w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 text-sm text-white outline-none placeholder:text-white/20 transition focus:border-white/25 focus:bg-white/[0.05]"
-                  />
-                </div>
-
-              </div>
-
-              {/* Email + Phone */}
-              <div className="grid gap-7 sm:grid-cols-2">
-
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="mb-2 block text-[10px] uppercase tracking-[0.2em] text-white/25"
-                  >
-                    Email
-                  </label>
-
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    placeholder="you@example.com"
-                    required
-                    className="h-12 w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 text-sm text-white outline-none placeholder:text-white/20 transition focus:border-white/25 focus:bg-white/[0.05]"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="phone"
-                    className="mb-2 block text-[10px] uppercase tracking-[0.2em] text-white/25"
-                  >
-                    Phone
-                  </label>
-
-                  <input
-                    id="phone"
-                    name="phone"
-                    type="tel"
-                    placeholder="+233 ..."
-                    required
-                    className="h-12 w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 text-sm text-white outline-none placeholder:text-white/20 transition focus:border-white/25 focus:bg-white/[0.05]"
-                  />
-                </div>
-
-              </div>
-
-              {/* Event type */}
-              <div>
-                <label
-                  htmlFor="type"
-                  className="mb-2 block text-[10px] uppercase tracking-[0.2em] text-white/25"
-                >
-                  Engagement
-                </label>
-
-                <select
-                  id="type"
-                  name="type"
-                  defaultValue=""
-                  required
-                  className="h-12 w-full appearance-none rounded-xl border border-white/10 bg-white/[0.03] px-4 text-sm text-white/60 outline-none transition focus:border-white/25 focus:bg-white/[0.05]"
-                >
-                  <option value="" disabled className="bg-[#111]">
-                    Select an engagement
-                  </option>
-
-                  {enquiryTypes.map((type) => (
-                    <option
-                      key={type}
-                      value={type}
-                      className="bg-[#111]"
-                    >
-                      {type}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              {/* Event date + time */}
-              <div className="grid gap-7 sm:grid-cols-2">
-
-                <div>
-                  <label
-                    htmlFor="date"
-                    className="mb-2 block text-[10px] uppercase tracking-[0.2em] text-white/25"
-                  >
-                    Event Date
-                  </label>
-
-                  <input
-                    id="date"
-                    name="date"
-                    type="date"
-                    required
-                    className="h-12 w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 text-sm text-white/60 outline-none transition focus:border-white/25 focus:bg-white/[0.05]"
-                  />
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="time"
-                    className="mb-2 block text-[10px] uppercase tracking-[0.2em] text-white/25"
-                  >
-                    Event Time
-                  </label>
-
-                  <input
-                    id="time"
-                    name="time"
-                    type="time"
-                    required
-                    className="h-12 w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 text-sm text-white/60 outline-none transition focus:border-white/25 focus:bg-white/[0.05]"
-                  />
-                </div>
-
-              </div>
-
-              {/* Venue */}
-              <div>
-                <label
-                  htmlFor="venue"
-                  className="mb-2 block text-[10px] uppercase tracking-[0.2em] text-white/25"
-                >
-                  Venue / Location
-                </label>
-
-                <input
-                  id="venue"
-                  name="venue"
-                  type="text"
-                  placeholder="Venue and city"
-                  required
-                  className="h-12 w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 text-sm text-white outline-none placeholder:text-white/20 transition focus:border-white/25 focus:bg-white/[0.05]"
-                />
-              </div>
-
-              {/* Theme */}
-              <div>
-                <label
-                  htmlFor="theme"
-                  className="mb-2 block text-[10px] uppercase tracking-[0.2em] text-white/25"
-                >
-                  Event Theme
-                </label>
-
-                <input
-                  id="theme"
-                  name="theme"
-                  type="text"
-                  placeholder="Theme / programme title"
-                  className="h-12 w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 text-sm text-white outline-none placeholder:text-white/20 transition focus:border-white/25 focus:bg-white/[0.05]"
-                />
-              </div>
-
-              {/* Budget */}
-              <div>
-                <label
-                  htmlFor="budget"
-                  className="mb-2 block text-[10px] uppercase tracking-[0.2em] text-white/25"
-                >
-                  Honorarium & Transportation Budget
-                </label>
-
-                <input
-                  id="budget"
-                  name="budget"
-                  type="text"
-                  placeholder="Intended budget"
-                  required
-                  className="h-12 w-full rounded-xl border border-white/10 bg-white/[0.03] px-4 text-sm text-white outline-none placeholder:text-white/20 transition focus:border-white/25 focus:bg-white/[0.05]"
-                />
-              </div>
-
-              {/* Message */}
-              <div>
-                <label
-                  htmlFor="message"
-                  className="mb-2 block text-[10px] uppercase tracking-[0.2em] text-white/25"
-                >
-                  Additional Details
-                </label>
-
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={6}
-                  placeholder="Tell us about the programme, expected audience, ministry role and any other relevant details..."
-                  required
-                  className="w-full resize-none rounded-xl border border-white/10 bg-white/[0.03] px-4 py-3 text-sm leading-7 text-white outline-none placeholder:text-white/20 transition focus:border-white/25 focus:bg-white/[0.05]"
-                />
-              </div>
-
-              {/* Submit */}
-              <button
-                type="submit"
-                className="group flex w-full items-center justify-center gap-3 rounded-full bg-white px-6 py-4 text-sm font-semibold text-black transition hover:bg-white/90"
-              >
-                Submit Invitation
-                <Send
-                  size={14}
-                  className="transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
-                />
-              </button>
-
-              <p className="text-center text-[10px] leading-5 text-white/20">
-                Please submit invitations at least one month before the event
-                where possible.
-              </p>
-
-            </form>
           </div>
         </div>
       </section>
@@ -518,9 +201,7 @@ export default function ContactPage() {
       ========================================================== */}
       <section className="border-t border-white/[0.07]">
         <div className="mx-auto max-w-7xl px-6 py-24 lg:px-10 lg:py-28">
-
           <div className="grid gap-12 lg:grid-cols-[.7fr_1.3fr]">
-
             <div>
               <p className="text-[10px] uppercase tracking-[0.35em] text-white/25">
                 Direct Contact
@@ -532,7 +213,6 @@ export default function ContactPage() {
             </div>
 
             <div className="grid gap-8 sm:grid-cols-2">
-
               {/* Email */}
               <a
                 href="mailto:wefaintnotfamily@gmail.com"
@@ -600,26 +280,20 @@ export default function ContactPage() {
                     Based in
                   </p>
 
-                  <p className="mt-2 text-sm text-white/55">
-                    Accra, Ghana
-                  </p>
+                  <p className="mt-2 text-sm text-white/55">Accra, Ghana</p>
                 </div>
               </div>
-
             </div>
           </div>
 
           {/* Socials */}
           <div className="mt-20 border-t border-white/[0.07] pt-10">
-
             <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
-
               <p className="text-[9px] uppercase tracking-[0.3em] text-white/20">
                 Connect with Nana Amoah
               </p>
 
               <div className="flex items-center gap-3">
-
                 <a
                   href="https://www.instagram.com/nanaamoahh/"
                   target="_blank"
@@ -679,7 +353,6 @@ export default function ContactPage() {
                 >
                   <FaSpotify size={14} />
                 </a>
-
               </div>
             </div>
           </div>
@@ -690,11 +363,9 @@ export default function ContactPage() {
           FINAL BRAND STATEMENT
       ========================================================== */}
       <section className="relative overflow-hidden border-t border-white/[0.07] bg-[#070707]">
-
         <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,.035),transparent_55%)]" />
 
         <div className="relative mx-auto max-w-4xl px-6 py-28 text-center lg:py-36">
-
           <img
             src="/images/wefaintnot-logo.jpg"
             alt="WeFaintNot"
@@ -712,7 +383,6 @@ export default function ContactPage() {
           <p className="mt-5 text-[10px] uppercase tracking-[0.3em] text-white/20">
             2 Corinthians 4:1
           </p>
-
         </div>
       </section>
     </main>

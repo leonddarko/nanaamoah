@@ -46,3 +46,48 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.22);
 }
+
+
+
+
+.ministry-highlights-viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.ministry-highlights-track {
+  display: flex;
+  width: max-content;
+  gap: 1rem;
+  padding-left: 1.5rem;
+  animation: ministry-highlights-scroll 42s linear infinite;
+}
+
+.ministry-highlights-item {
+  flex: 0 0 auto;
+}
+
+.ministry-highlights-viewport:hover .ministry-highlights-track,
+.ministry-highlights-viewport:focus-within .ministry-highlights-track {
+  animation-play-state: paused;
+}
+
+@keyframes ministry-highlights-scroll {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ministry-highlights-track {
+    animation: none;
+  }
+
+  .ministry-highlights-viewport {
+    overflow-x: auto;
+  }
+}
