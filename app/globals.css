@@ -49,22 +49,22 @@ body {
 
 
 
-
 .ministry-highlights-viewport {
-  overflow: hidden;
   width: 100%;
+  overflow: hidden;
 }
 
 .ministry-highlights-track {
   display: flex;
   width: max-content;
-  gap: 1rem;
-  padding-left: 1.5rem;
   animation: ministry-highlights-scroll 42s linear infinite;
 }
 
-.ministry-highlights-item {
+.ministry-highlights-group {
+  display: flex;
   flex: 0 0 auto;
+  gap: 1rem;
+  padding-right: 1rem;
 }
 
 .ministry-highlights-viewport:hover .ministry-highlights-track,
@@ -91,3 +91,4 @@ body {
     overflow-x: auto;
   }
 }
+

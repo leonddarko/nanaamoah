@@ -4,6 +4,8 @@ import {
   ArrowUpRight,
   CalendarDays,
   Dome,
+  Images,
+  ImagesIcon,
   MailBadge,
   MapPin,
   MicSignal,
@@ -21,8 +23,8 @@ const upcomingEvents = [
     location: "Ashale Botwe",
     time: "4:30pm",
     type: "Worship Session",
-    image: "/images/events/praise-waiting-live.jpg",
-    registerlink: "https://",
+    image: "/images/events/praise-waiting-live-Kyei-Mensah.jpg",
+    registerlink: "https://forms.gle/gk7UZgNYkD36PQo48",
     livestreamUrl: "https://www.youtube.com/@nanaamoahh/streams",
   },
   //   {
@@ -75,15 +77,19 @@ const ministrationArchive = {
 const pastEvents = [
   // Keep your existing event records and add these optional fields:
   {
-    title: "Past Live Events",
-    year: "2025 - 2026",
-    location: "Accra, Ghana",
+    title: "Paise Waiting - July Edition",
+    year: "2026",
+    location: "",
     photos: [
-      "/images/events/event-audience-01.jpg",
-      "/images/events/event-audience-03.jpg",
+      "/images/events/praise-waiting-july-2026-01.jpg",
+      "/images/events/praise-waiting-july-2026-02.jpg",
+      "/images/events/praise-waiting-july-2026-03.jpg",
+      "/images/events/praise-waiting-july-2026-04.jpg",
+      "/images/events/praise-waiting-july-2026-05.jpg",
     ],
-    // livestreamUrl: "https://your-confirmed-recording-link",
-    youtubeUrl: "https://www.youtube.com/@nanaamoahh/videos",
+    livestreamUrl: "",
+    youtubeUrl: "",
+    morephotosUrl: "https://goldenlensproduction.ourpixo.com/0TRO",
   },
 ];
 
@@ -159,7 +165,7 @@ export default function EventsPage() {
                     src={event.image}
                     alt={event.title}
                     fill
-                    className="object-cover transition duration-700 group-hover:scale-[1.03]"
+                    className="object-cover object-top transition duration-700 group-hover:scale-[1.03]"
                   />
 
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
@@ -222,13 +228,16 @@ export default function EventsPage() {
                     )}
 
                     {event.registerlink && (
-                      <button
+                      <Link href={event.registerlink} target="_blank">
+                        <button
                         type="button"
                         className="mt-7 flex items-center gap-2 text-xs text-white/55 transition hover:text-white cursor-pointer"
                       >
                         Register
                         <MailBadge size={13} />
                       </button>
+                      </Link>
+                      
                     )}
                   </div>
                 </div>
@@ -244,7 +253,7 @@ export default function EventsPage() {
         <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] border border-white/[0.08] bg-white/[0.025]">
           <div className="relative min-h-[520px]">
             <Image
-              src="/images/events/praise-waiting-live.jpg"
+              src="/images/events/praise-waiting-live-2026.jpg"
               alt="Nana Amoah performing live"
               fill
               className="object-cover object-top"
@@ -263,8 +272,7 @@ export default function EventsPage() {
                 </h2>
 
                 <p className="mt-5 max-w-xl text-sm leading-7 text-white/45">
-                  Experience an atmosphere of worship, music and fellowship with
-                  Nana Amoah.
+                  Theme: Whoever offers praise glorifies ME. Psalm 50:23
                 </p>
 
                 <Link
@@ -333,7 +341,7 @@ export default function EventsPage() {
                     )}
 
                     {/* Recording links */}
-                    {(event.livestreamUrl || event.youtubeUrl) && (
+                    {(event.livestreamUrl || event.youtubeUrl || event.morephotosUrl) && (
                       <div className="mt-7 flex flex-wrap gap-3">
                         {event.livestreamUrl && (
                           <a
@@ -360,6 +368,19 @@ export default function EventsPage() {
                             <ArrowUpRight size={13} />
                           </a>
                         )}
+
+                        {event.morephotosUrl && (
+                          <a
+                            href={event.morephotosUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 rounded-full border border-white/10 px-4 py-3 text-xs text-white/60 transition hover:border-white/25 hover:text-white"
+                          >
+                            <ImagesIcon size={15} />
+                            More Photos
+                            <ArrowUpRight size={13} />
+                          </a>
+                        )}
                       </div>
                     )}
                   </div>
@@ -367,7 +388,7 @@ export default function EventsPage() {
                   {/* Selected audience photographs */}
                   {event.photos?.length > 0 ? (
                     <div className="grid grid-cols-2 gap-2 p-3 sm:grid-cols-3">
-                      {event.photos.slice(0, 3).map((photo, index) => (
+                      {event.photos.slice(0, 5).map((photo, index) => (
                         <div
                           key={photo}
                           className={`relative overflow-hidden rounded-xl bg-white/[0.04] ${
