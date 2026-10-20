@@ -1,8 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ScrollToTop from "@/components/ScrollToTop";
-import Navbar from "@/components/Navbar";
-import Footer from "@/components/Footer";
+import { getServerSession } from "next-auth";
+import SessionProvider from "@/lib/SessionProvider"
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -61,26 +61,24 @@ export const metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Nana Amoah | Gospel Minister & Worshipper",
-    description:
-      "Music, worship and ministry from Nana Amoah.",
+    description: "Music, worship and ministry from Nana Amoah.",
     images: ["/images/nana-og.png"],
   },
 };
 
-
-
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const session = await getServerSession();
   return (
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-      <Navbar />
-      <ScrollToTop />
-      {children}
+        <SessionProvider session={session}>
+          <ScrollToTop />
+          {children}
+        </SessionProvider>
       </body>
-      <Footer />
     </html>
   );
 }
