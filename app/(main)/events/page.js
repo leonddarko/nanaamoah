@@ -22,8 +22,8 @@ const upcomingEvents = [
     venue: "Victory Bible Church, Higher Heights Sanctuary",
     location: "Ashale Botwe",
     time: "4:30pm",
-    type: "Worship Session",
-    image: "/images/events/praise-waiting-live-Kyei-Mensah.jpg",
+    type: "Praise Concert",
+    image: "/images/events/praise-waiting-live-2026.jpg",
     registerlink: "https://forms.gle/gk7UZgNYkD36PQo48",
     livestreamUrl: "https://www.youtube.com/@nanaamoahh/streams",
   },
@@ -165,7 +165,7 @@ export default function EventsPage() {
                     src={event.image}
                     alt={event.title}
                     fill
-                    className="object-cover object-top transition duration-700 group-hover:scale-[1.03]"
+                    className="object-cover object-center transition duration-700 group-hover:scale-[1.03]"
                   />
 
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />

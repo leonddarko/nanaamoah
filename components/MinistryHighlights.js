@@ -7,10 +7,11 @@ const highlights = [
   {
     id: "events",
     category: "Upcoming Events",
-    title: "Praise Waiting Live - November 1st",
+    title: "Praise Waiting Live - Nov 1, 2026",
     description: "Explore upcoming gatherings and ministry engagements.",
     href: "/events",
     icon: CalendarDays,
+    backgroundImage: "/images/events/praise-waiting-live-2026.jpg",
   },
   {
     id: "release",
@@ -21,6 +22,7 @@ const highlights = [
     href: "https://music.apple.com/gh/album/nobody-greater-feat-philip-adzale-kwaku-kwame-ep/6807652673",
     icon: Music2,
     external: true,
+    backgroundImage: "/images/music/latest-release.png",
   },
   {
     id: "announcement",
@@ -29,6 +31,7 @@ const highlights = [
     description: "For invitations, bookings and ministry enquiries.",
     href: "/contact",
     icon: Megaphone,
+    backgroundImage: "/images/nana-og.png",
   },
 ];
 
@@ -72,8 +75,22 @@ export default function MinistryHighlights() {
                     target={item.external ? "_blank" : undefined}
                     rel={item.external ? "noopener noreferrer" : undefined}
                     tabIndex={group === 1 ? -1 : 0}
-                    className="group flex min-h-[108px] w-[290px] shrink-0 items-center gap-4 rounded-xl border border-white/[0.07] bg-white/[0.02] p-4 transition hover:border-white/20 hover:bg-white/[0.045] sm:w-[350px] sm:p-5"
+                    className="group relative isolate flex min-h-[108px] w-[290px] shrink-0 items-center gap-4 overflow-hidden rounded-xl border border-white/[0.08] bg-[#090909] p-4 transition duration-500 hover:border-white/20 sm:w-[350px] sm:p-5"
                   >
+                    {/* Subtle background image */}
+                    <div
+                      aria-hidden="true"
+                      className="pointer-events-none absolute inset-0 -z-10 bg-cover bg-center opacity-[0.25] transition duration-700 group-hover:scale-105 group-hover:opacity-[0.35]"
+                      style={{
+                        backgroundImage: `url("${item.backgroundImage}")`,
+                      }}
+                    />
+
+                    {/* Dark overlay for legibility */}
+                    <div
+                      aria-hidden="true"
+                      className="pointer-events-none absolute inset-0 -z-10 bg-gradient-to-r from-black/95 via-black/75 to-black/45"
+                    />
                     <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full border border-white/10 bg-white/[0.035] text-white/55">
                       <Icon size={18} strokeWidth={1.5} />
                     </div>

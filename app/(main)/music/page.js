@@ -1,18 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import {
-  ArrowUpRight,
-  Headphones,
-  Play,
-  Disc3,
-  Music2,
-} from "lucide-react";
-import {
-  FaYoutube,
-  FaSpotify,
-  FaApple,
-  FaDeezer,
-} from "react-icons/fa6";
+import { ArrowUpRight, Headphones, Play, Disc3, Music2 } from "lucide-react";
+import { FaYoutube, FaSpotify, FaApple, FaDeezer } from "react-icons/fa6";
+import YouTubeMusicPlayer from "@/components/YouTubeMusicPlayer";
 
 const platforms = [
   {
@@ -49,7 +39,8 @@ const albums = [
     artwork: "/images/music/ascent-album.png",
     year: "2026",
     links: {
-      youtube: "https://www.youtube.com/watch?v=uG6NFiPUmvg&list=PLLq0wA5nsaVpq8dSb3fklCfOJoxLS1n6O",
+      youtube:
+        "https://www.youtube.com/watch?v=uG6NFiPUmvg&list=PLLq0wA5nsaVpq8dSb3fklCfOJoxLS1n6O",
       spotify: "https://open.spotify.com/album/3lfOBC2fXUgMAv9oCeOpxo",
       apple: "https://music.apple.com/gh/album/ascent/1889693524",
       deezer: "https://www.deezer.com/en/album/951878291",
@@ -62,7 +53,8 @@ const albums = [
     artwork: "/images/music/praise-waiting-live.png",
     year: "2025",
     links: {
-      youtube: "https://www.youtube.com/playlist?list=PLLq0wA5nsaVqjjssSRbefTvswBlCy3zSU",
+      youtube:
+        "https://www.youtube.com/playlist?list=PLLq0wA5nsaVqjjssSRbefTvswBlCy3zSU",
       spotify: "https://open.spotify.com/album/0Sl8CV9JCzwHWKSdj6DJuv",
       apple: "https://music.apple.com/gh/album/praise-waiting-live/1794896185",
       deezer: "https://www.deezer.com/en/album/709794151",
@@ -70,8 +62,7 @@ const albums = [
   },
 ];
 
-const sectionLabel =
-  "text-[10px] uppercase tracking-[0.35em] text-white/35";
+const sectionLabel = "text-[10px] uppercase tracking-[0.35em] text-white/35";
 
 const platformLinks = [
   { key: "youtube", label: "YouTube" },
@@ -83,7 +74,6 @@ const platformLinks = [
 export default function MusicPage() {
   return (
     <main className="min-h-screen overflow-hidden bg-[#050505] text-white">
-
       {/* =========================================================
           HERO — KEEP THE ORIGINAL ATMOSPHERE
       ========================================================== */}
@@ -123,6 +113,17 @@ export default function MusicPage() {
         </div>
       </section>
 
+      {/* Featured Music Player */}
+      <section className="mx-auto w-full max-w-7xl px-5 py-12 sm:px-8 lg:px-12">
+        <YouTubeMusicPlayer
+          videoId="RyBrsfcRXVE"
+          title="Nobody Greater ft. Philip Adzale & Kwaku Kwame"
+          artist="Nana Amoah"
+          artwork="/images/music/latest-release.png"
+          description="Take a moment to listen, worship, and reconnect through the music."
+        />
+      </section>
+
       {/* =========================================================
           ALBUMS & RELEASES
       ========================================================== */}
@@ -158,10 +159,7 @@ export default function MusicPage() {
 
           <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {albums.map((album, index) => (
-              <article
-                key={album.title}
-                className="group"
-              >
+              <article key={album.title} className="group">
                 {/* Artwork */}
                 <div className="relative overflow-hidden rounded-[1.75rem] border border-white/[0.09] bg-[#15100d] p-2 transition duration-500 group-hover:border-[#b28a68]/30">
                   <div className="pointer-events-none absolute -inset-12 bg-[#825438]/10 opacity-0 blur-[65px] transition-opacity duration-500 group-hover:opacity-100" />
@@ -320,13 +318,14 @@ export default function MusicPage() {
                   <h3 className="mt-6 text-4xl font-light tracking-tight sm:text-5xl lg:text-6xl">
                     Nobody
                     <br />
-                    <span className="text-white/45">Greater.</span>
+                    <span className="text-white/45">Greater </span>
+                    <span className="text-white/45">ft. Philip Adzale & Kwaku Kwame</span>
                   </h3>
 
                   <p className="mt-5 max-w-md text-sm leading-7 text-white/50">
                     Listen to Nana Amoah&apos;s music across your favourite
-                    platforms and discover songs centred on faith, worship
-                    and purpose.
+                    platforms and discover songs centred on faith, worship and
+                    purpose.
                   </p>
                 </div>
 
@@ -403,8 +402,8 @@ export default function MusicPage() {
             </h2>
 
             <p className="mt-4 text-sm leading-7 text-white/45">
-              Stream, watch and discover Nana Amoah across your favourite
-              music platforms.
+              Stream, watch and discover Nana Amoah across your favourite music
+              platforms.
             </p>
           </div>
 
