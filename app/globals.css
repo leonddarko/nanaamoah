@@ -92,3 +92,45 @@ body {
   }
 }
 
+
+.prayer-phone-input {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  min-height: 46px;
+  color: white;
+}
+
+.prayer-phone-input .PhoneInputCountry {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.prayer-phone-input .PhoneInputCountrySelect {
+  max-width: 7rem;
+  background: #111;
+  color: white;
+  border: none;
+  outline: none;
+}
+
+.prayer-phone-input .PhoneInputCountrySelect option {
+  background: #111;
+  color: white;
+}
+
+.prayer-phone-input .PhoneInputInput {
+  min-width: 0;
+  width: 100%;
+  background: transparent;
+  color: white;
+  border: none;
+  outline: none;
+  font-size: 0.875rem;
+  padding: 0.75rem 0;
+}
+
+.prayer-phone-input .PhoneInputInput::placeholder {
+  color: rgb(255 255 255 / 25%);
+}

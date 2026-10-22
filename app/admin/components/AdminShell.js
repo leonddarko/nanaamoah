@@ -16,6 +16,7 @@ import {
   ChevronDown,
   ExternalLink,
   Users,
+  MessageCircleHeart,
 } from "lucide-react";
 
 const navigation = [
@@ -33,15 +34,15 @@ const navigation = [
     label: "Management",
     items: [
       {
+        name: "Prayer Requests",
+        href: "/admin/prayer-requests",
+        icon: MessageCircleHeart,
+      },
+      {
         name: "Manage Users",
         href: "/admin/users",
         icon: Users,
       },
-      // {
-      //   name: "Website Content",
-      //   href: "/admin/content",
-      //   icon: FileText,
-      // },
       // {
       //   name: "Media Library",
       //   href: "/admin/media",

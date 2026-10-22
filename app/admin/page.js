@@ -1,4 +1,3 @@
-
 import Link from "next/link";
 import {
   ArrowUpRight,
@@ -12,9 +11,18 @@ import {
   Activity,
   ChevronRight,
   LockKeyhole,
+  MessageCircleHeart,
 } from "lucide-react";
+import { FaPray, FaPrayingHands } from "react-icons/fa";
 
 const managementItems = [
+  {
+    title: "Prayer Requests",
+    description: "Manage the prayer requests sent.",
+    href: "/admin/prayer-requests",
+    icon: MessageCircleHeart,
+    label: "Manage prayer requests",
+  },
   {
     title: "User management",
     description: "Manage administrator accounts and user access.",
@@ -22,36 +30,29 @@ const managementItems = [
     icon: Users,
     label: "Manage users",
   },
-//   {
-//     title: "Website content",
-//     description: "Manage the content published on the website.",
-//     href: "/admin/content",
-//     icon: FileText,
-//     label: "Manage content",
-//   },
-//   {
-//     title: "Media library",
-//     description: "Access and organize website media assets.",
-//     href: "/admin/media",
-//     icon: Images,
-//     label: "Browse media",
-//   },
-//   {
-//     title: "Settings",
-//     description: "Configure website management preferences.",
-//     href: "/admin/settings",
-//     icon: Settings,
-//     label: "View settings",
-//   },
+  //   {
+  //     title: "Media library",
+  //     description: "Access and organize website media assets.",
+  //     href: "/admin/media",
+  //     icon: Images,
+  //     label: "Browse media",
+  //   },
+  //   {
+  //     title: "Settings",
+  //     description: "Configure website management preferences.",
+  //     href: "/admin/settings",
+  //     icon: Settings,
+  //     label: "View settings",
+  //   },
 ];
 
 const quickActions = [
-//   {
-//     title: "Create administrator",
-//     description: "Give an authorized person management access.",
-//     href: "/admin/users/new",
-//     icon: UserPlus,
-//   },
+  //   {
+  //     title: "Create administrator",
+  //     description: "Give an authorized person management access.",
+  //     href: "/admin/users/new",
+  //     icon: UserPlus,
+  //   },
   {
     title: "Manage users",
     description: "Review and manage existing accounts.",
@@ -94,14 +95,13 @@ export default function AdminDashboardPage() {
 
           <div className="mt-7 flex flex-wrap gap-3">
             <Link
-              href="/admin/users/new"
+              href="/admin/prayer-requests"
               className="inline-flex h-11 items-center gap-2 rounded-xl bg-white px-4 text-xs font-semibold text-black transition hover:bg-white/90"
             >
-              <UserPlus size={15} />
-              Create administrator
+              <MessageCircleHeart size={15} />
+              Manage Prayer Requests
               <ArrowUpRight size={14} />
             </Link>
-
             <Link
               href="/"
               className="inline-flex h-11 items-center gap-2 rounded-xl border border-white/10 bg-white/[0.025] px-4 text-xs font-medium text-white/70 transition hover:bg-white/[0.06] hover:text-white"
@@ -109,6 +109,15 @@ export default function AdminDashboardPage() {
               View website
               <ArrowUpRight size={14} />
             </Link>
+
+             {/* <Link
+              href="/admin/users/new"
+              className="inline-flex h-11 items-center gap-2 rounded-xl bg-white px-4 text-xs font-semibold text-black transition hover:bg-white/90"
+            >
+              <UserPlus size={15} />
+              Create administrator
+              <ArrowUpRight size={14} />
+            </Link> */}
           </div>
         </div>
       </section>
@@ -188,9 +197,7 @@ export default function AdminDashboardPage() {
                   </div>
 
                   <div className="min-w-0 flex-1">
-                    <h3 className="text-xs font-medium">
-                      {action.title}
-                    </h3>
+                    <h3 className="text-xs font-medium">{action.title}</h3>
                     <p className="mt-1 text-[11px] leading-5 text-white/40">
                       {action.description}
                     </p>
@@ -237,10 +244,7 @@ export default function AdminDashboardPage() {
             </div>
 
             <div className="flex items-start gap-3">
-              <Activity
-                size={15}
-                className="mt-0.5 shrink-0 text-white/40"
-              />
+              <Activity size={15} className="mt-0.5 shrink-0 text-white/40" />
               <div>
                 <p className="text-xs font-medium text-white/75">
                   Activity monitoring

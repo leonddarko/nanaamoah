@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Menu, X } from "lucide-react";
+import { ArrowUpRight, Menu, X, ChevronDown } from "lucide-react";
 
 import {
   FaInstagram,
@@ -21,6 +21,12 @@ const navItems = [
   { label: "About", href: "/about" },
   { label: "Events", href: "/events" },
   { label: "Contact", href: "/contact" },
+];
+
+const getInvolvedItems = [
+  { label: "Prayer Support", href: "/prayer" },
+  // { label: "Testimonies", href: "/testimonies" },
+  // { label: "Give", href: "/give" },
 ];
 
 const socials = [
@@ -56,6 +62,7 @@ const platforms = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [involvedOpen, setInvolvedOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -82,6 +89,7 @@ export default function Navbar() {
 
   const closeMobileMenu = () => {
     setMobileMenuOpen(false);
+    setInvolvedOpen(false);
   };
 
   return (
@@ -127,7 +135,6 @@ export default function Navbar() {
               NANA AMOAH
             </span>
           </Link>
-
           {/* =====================================================
               DESKTOP NAVIGATION
           ====================================================== */}
@@ -136,15 +143,45 @@ export default function Navbar() {
               <Link
                 key={item.label}
                 href={item.href}
-                className="relative py-2 text-sm text-white/45 transition-colors duration-300 hover:text-white"
+                className="py-2 text-sm text-white/45 transition-colors duration-300 hover:text-white"
               >
                 {item.label}
-
-                <span className="absolute bottom-0 left-1/2 h-px w-0 -translate-x-1/2 bg-white transition-all duration-300 group-hover:w-full" />
               </Link>
             ))}
-          </nav>
 
+            <div className="group relative">
+              <button
+                type="button"
+                aria-haspopup="true"
+                className="flex items-center gap-1.5 py-2 text-sm text-white/45 transition-colors duration-300 hover:text-white"
+              >
+                Get Involved
+                <ChevronDown
+                  size={14}
+                  className="transition-transform duration-300 group-hover:rotate-180 group-focus-within:rotate-180"
+                />
+              </button>
+
+              <div className="invisible absolute left-1/2 top-full z-50 w-60 -translate-x-1/2 translate-y-2 pt-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
+                <div className="rounded-2xl border border-white/10 bg-[#090909]/95 p-2 shadow-2xl backdrop-blur-2xl">
+                  <p className="px-3 pb-2 pt-2 text-[9px] uppercase tracking-[0.25em] text-white/25">
+                    Be Part of the Ministry
+                  </p>
+
+                  {getInvolvedItems.map((item) => (
+                    <Link
+                      key={item.label}
+                      href={item.href}
+                      className="flex items-center justify-between rounded-xl px-3 py-3 text-sm text-white/60 transition hover:bg-white/[0.06] hover:text-white"
+                    >
+                      {item.label}
+                      <ArrowUpRight size={13} className="text-white/25" />
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </nav>
           {/* =====================================================
               DESKTOP LISTEN CTA
           ====================================================== */}
@@ -166,16 +203,13 @@ export default function Navbar() {
               className="text-white/30 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-white"
             />
           </Link>
-
           {/* =====================================================
               MOBILE MENU BUTTON
           ====================================================== */}
           <button
             type="button"
             aria-label={
-              mobileMenuOpen
-                ? "Close navigation menu"
-                : "Open navigation menu"
+              mobileMenuOpen ? "Close navigation menu" : "Open navigation menu"
             }
             aria-expanded={mobileMenuOpen}
             onClick={() => setMobileMenuOpen((prev) => !prev)}
@@ -274,6 +308,56 @@ export default function Navbar() {
                 />
               </Link>
             ))}
+            <div
+              className={`border-b border-white/[0.07] transition-all duration-500 ${
+                mobileMenuOpen
+                  ? "translate-y-0 opacity-100"
+                  : "translate-y-8 opacity-0"
+              }`}
+              style={{ transitionDelay: "430ms" }}
+            >
+              <button
+                type="button"
+                aria-expanded={involvedOpen}
+                onClick={() => setInvolvedOpen((prev) => !prev)}
+                className="flex w-full items-center justify-between py-5 text-left"
+              >
+                <span className="text-4xl font-light tracking-tight text-white/85">
+                  Get Involved
+                </span>
+
+                <ChevronDown
+                  size={20}
+                  strokeWidth={1.4}
+                  className={`text-white/40 transition-transform duration-300 ${
+                    involvedOpen ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+
+              <div
+                className={`grid transition-all duration-300 ${
+                  involvedOpen
+                    ? "grid-rows-[1fr] opacity-100"
+                    : "grid-rows-[0fr] opacity-0"
+                }`}
+              >
+                <div className="overflow-hidden">
+                  {getInvolvedItems.map((item) => (
+                    <Link
+                      key={item.label}
+                      href={item.href}
+                      onClick={closeMobileMenu}
+                      tabIndex={involvedOpen ? 0 : -1}
+                      className="flex items-center justify-between py-3 pl-4 text-base text-white/50 transition hover:text-white"
+                    >
+                      {item.label}
+                      <ArrowUpRight size={15} className="text-white/25" />
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
           </nav>
 
           {/* Mobile Listen CTA */}
@@ -290,16 +374,11 @@ export default function Navbar() {
               className="group flex w-full items-center justify-center gap-3 rounded-full bg-white py-4 text-sm font-semibold text-black transition hover:bg-white/90"
             >
               Listen Now
-
               <span className="flex items-center gap-2 border-l border-black/10 pl-3">
                 {platforms.map(({ label, icon: Icon }) => (
-                  <Icon
-                    key={label}
-                    size={label === "Deezer" ? 14 : 13}
-                  />
+                  <Icon key={label} size={label === "Deezer" ? 14 : 13} />
                 ))}
               </span>
-
               <ArrowUpRight
                 size={14}
                 className="text-black/40 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"

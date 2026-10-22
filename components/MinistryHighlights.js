@@ -36,8 +36,6 @@ const highlights = [
 ];
 
 export default function MinistryHighlights() {
-  // Duplicate items to create a seamless scrolling loop.
-  // const items = [...highlights, ...highlights];
 
   return (
     <section

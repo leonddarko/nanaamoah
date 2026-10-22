@@ -5,7 +5,7 @@ import AdminShell from "./components/AdminShell";
 
 export const metadata = {
   title: {
-    default: "Admin Dashboard | Nana Amoah",
+    default: "Management Portal | Nana Amoah",
     template: "%s | Nana Amoah Admin",
   },
   robots: {
