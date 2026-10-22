@@ -253,10 +253,10 @@ export default function EventsPage() {
         <div className="relative mx-auto max-w-7xl overflow-hidden rounded-[2rem] border border-white/[0.08] bg-white/[0.025]">
           <div className="relative min-h-[520px]">
             <Image
-              src="/images/events/praise-waiting-live-2026.jpg"
+              src="/images/events/praise-waiting-live-kyei-mensah.jpg"
               alt="Nana Amoah performing live"
               fill
-              className="object-cover object-top"
+              className="object-cover object-center"
             />
 
             <div className="absolute inset-0 bg-gradient-to-r from-black via-black/55 to-transparent" />
