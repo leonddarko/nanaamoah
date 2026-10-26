@@ -25,8 +25,8 @@ const navItems = [
 
 const getInvolvedItems = [
   { label: "Prayer Support", href: "/prayer" },
-  // { label: "Testimonies", href: "/testimonies" },
-  // { label: "Give", href: "/give" },
+  { label: "Testimonies", href: "/testimonies" },
+  { label: "Give", href: "/give" },
 ];
 
 const socials = [
@@ -297,7 +297,7 @@ export default function Navbar() {
                   transitionDelay: `${150 + index * 70}ms`,
                 }}
               >
-                <span className="text-4xl font-light tracking-tight text-white/85 transition-colors group-hover:text-white">
+                <span className="text-3xl font-light tracking-tight text-white/85 transition-colors group-hover:text-white">
                   {item.label}
                 </span>
 
@@ -322,7 +322,7 @@ export default function Navbar() {
                 onClick={() => setInvolvedOpen((prev) => !prev)}
                 className="flex w-full items-center justify-between py-5 text-left"
               >
-                <span className="text-4xl font-light tracking-tight text-white/85">
+                <span className="text-3xl font-light tracking-tight text-white/85">
                   Get Involved
                 </span>
 

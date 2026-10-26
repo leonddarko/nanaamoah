@@ -12,6 +12,7 @@ import {
   ChevronRight,
   LockKeyhole,
   MessageCircleHeart,
+  MessageSquareQuote,
 } from "lucide-react";
 import { FaPray, FaPrayingHands } from "react-icons/fa";
 
@@ -22,6 +23,13 @@ const managementItems = [
     href: "/admin/prayer-requests",
     icon: MessageCircleHeart,
     label: "Manage prayer requests",
+  },
+  {
+    title: "Testimonies",
+    description: "Manage testimonies sent.",
+    href: "/admin/testimonies",
+    icon: MessageSquareQuote,
+    label: "Manage users",
   },
   {
     title: "User management",
@@ -103,6 +111,14 @@ export default function AdminDashboardPage() {
               <ArrowUpRight size={14} />
             </Link>
             <Link
+              href="/admin/testimonies"
+              className="inline-flex h-11 items-center gap-2 rounded-xl bg-white px-4 text-xs font-semibold text-black transition hover:bg-white/90"
+            >
+              <MessageSquareQuote size={15} />
+              Manage Testimonies
+              <ArrowUpRight size={14} />
+            </Link>
+            <Link
               href="/"
               className="inline-flex h-11 items-center gap-2 rounded-xl border border-white/10 bg-white/[0.025] px-4 text-xs font-medium text-white/70 transition hover:bg-white/[0.06] hover:text-white"
             >
@@ -110,7 +126,7 @@ export default function AdminDashboardPage() {
               <ArrowUpRight size={14} />
             </Link>
 
-             {/* <Link
+            {/* <Link
               href="/admin/users/new"
               className="inline-flex h-11 items-center gap-2 rounded-xl bg-white px-4 text-xs font-semibold text-black transition hover:bg-white/90"
             >

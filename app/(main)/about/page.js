@@ -1,12 +1,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowUpRight, Music2, Sparkles } from "lucide-react";
+import YouTubeMusicPlayer from "@/components/YouTubeMusicPlayer";
 
-const ambientGrid =
-  "pointer-events-none absolute inset-0 overflow-hidden";
+const ambientGrid = "pointer-events-none absolute inset-0 overflow-hidden";
 
-const sectionLabel =
-  "text-[10px] uppercase tracking-[0.35em] text-white/35";
+const sectionLabel = "text-[10px] uppercase tracking-[0.35em] text-white/35";
 
 export default function AboutPage() {
   return (
@@ -40,8 +39,8 @@ export default function AboutPage() {
               </h1>
 
               <p className="mt-9 max-w-2xl text-base leading-8 text-white/50 sm:text-lg">
-                A ministry committed to drawing the hearts of men to the
-                heart of the Father through music and the preaching of the Word.
+                A ministry committed to drawing the hearts of men to the heart
+                of the Father through music and the preaching of the Word.
               </p>
             </div>
 
@@ -89,15 +88,16 @@ export default function AboutPage() {
               <p>
                 Nana Amoah is called of God to draw the hearts of men to the
                 heart of the Father. His ministry is committed to strengthening,
-                encouraging, and exhorting people through music and the preaching
-                of the Word of God.
+                encouraging, and exhorting people through music and the
+                preaching of the Word of God.
               </p>
 
               <p>
                 At the centre of the ministry is a simple desire: to present
                 Jesus to everyone who encounters him. Music becomes one of the
                 vessels through which that desire is expressed — creating space
-                for worship, reflection, encouragement and an encounter with God.
+                for worship, reflection, encouragement and an encounter with
+                God.
               </p>
 
               <p>
@@ -109,7 +109,7 @@ export default function AboutPage() {
 
             {/* Editorial image strip */}
             <div className="mt-10 grid grid-cols-2 gap-4 sm:mt-14 sm:gap-5">
-                            <div className="group relative mt-8 overflow-hidden rounded-2xl border border-white/[0.09] bg-[#17100d] sm:mt-12">
+              <div className="group relative mt-8 overflow-hidden rounded-2xl border border-white/[0.09] bg-[#17100d] sm:mt-12">
                 <div className="relative aspect-[4/5]">
                   <Image
                     src="/images/nana-amoah-worship.jpg"
@@ -282,8 +282,8 @@ export default function AboutPage() {
 
             <div>
               <p className="max-w-2xl text-sm leading-8 text-white/55 sm:text-base">
-                Nana Amoah is the pioneer of Praise Waiting — a powerful move
-                of God premiered monthly on YouTube and crowned with a special
+                Nana Amoah is the pioneer of Praise Waiting — a powerful move of
+                God premiered monthly on YouTube and crowned with a special
                 in-person service at the end of each year.
               </p>
 
@@ -363,8 +363,8 @@ export default function AboutPage() {
           </h2>
 
           <p className="mx-auto mt-6 max-w-xl text-sm leading-7 text-white/45">
-            A ministry family committed to carrying the assignment with
-            faith, endurance and purpose.
+            A ministry family committed to carrying the assignment with faith,
+            endurance and purpose.
           </p>
 
           <p className="mt-7 font-serif text-xl italic text-[#c4a184]/40">
@@ -415,6 +415,17 @@ export default function AboutPage() {
             </Link>
           </div>
         </div>
+      </section>
+
+      {/* Featured Music Player */}
+      <section className="mx-auto w-full max-w-7xl px-5 py-12 sm:px-8 lg:px-12">
+        <YouTubeMusicPlayer
+          videoId="F0kZm9kEGdE"
+          title="Yesu Ho Nnwom"
+          artist="Nana Amoah"
+          artwork="/images/music/yesu-ho-nnwom.png"
+          description="Take a moment to listen, worship, and reconnect through the music."
+        />
       </section>
     </main>
   );

@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
-import { ArrowUpRight, Menu, Music2, X } from "lucide-react";
+import { ArrowUpRight, Menu, X, ChevronDown } from "lucide-react";
 
 import {
   FaInstagram,
@@ -22,23 +23,62 @@ const navItems = [
   { label: "Contact", href: "/contact" },
 ];
 
+const getInvolvedItems = [
+  { label: "Prayer Support", href: "/prayer" },
+  // { label: "Testimonies", href: "/testimonies" },
+  { label: "Give", href: "/give" },
+];
+
+const socials = [
+  {
+    label: "Instagram",
+    href: "https://www.instagram.com/nanaamoahh/",
+    icon: FaInstagram,
+  },
+  {
+    label: "X",
+    href: "https://x.com/nanaamoahh_",
+    icon: FaXTwitter,
+  },
+  {
+    label: "Facebook",
+    href: "https://facebook.com/nanakwadwo.amoah",
+    icon: FaFacebookF,
+  },
+  {
+    label: "TikTok",
+    href: "https://www.tiktok.com/@nanaamoahh",
+    icon: FaTiktok,
+  },
+];
+
+const platforms = [
+  { label: "YouTube", icon: FaYoutube },
+  { label: "Spotify", icon: FaSpotify },
+  { label: "Apple Music", icon: FaApple },
+  { label: "Deezer", icon: FaDeezer },
+];
+
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [involvedOpen, setInvolvedOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 20);
+      setScrolled(window.scrollY > 24);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    handleScroll();
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
-  // Prevent background scrolling while mobile menu is open
+  // Prevent background scrolling while mobile menu is open.
   useEffect(() => {
     document.body.style.overflow = mobileMenuOpen ? "hidden" : "";
 
@@ -49,6 +89,7 @@ export default function Navbar() {
 
   const closeMobileMenu = () => {
     setMobileMenuOpen(false);
+    setInvolvedOpen(false);
   };
 
   return (
@@ -64,52 +105,107 @@ export default function Navbar() {
         <div
           className={`mx-auto flex w-full items-center justify-between transition-all duration-500 ${
             scrolled
-              ? "max-w-6xl rounded-full border border-white/10 bg-black/60 px-5 py-3 shadow-2xl shadow-black/20 backdrop-blur-2xl sm:px-6"
+              ? "max-w-6xl rounded-full border border-white/10 bg-black/60 px-5 py-3 shadow-[0_12px_40px_rgba(0,0,0,0.3)] backdrop-blur-2xl sm:px-6"
               : "max-w-7xl px-6 py-6 lg:px-10"
           }`}
         >
-          {/* Logo */}
+          {/* =====================================================
+              BRAND
+          ====================================================== */}
           <Link
             href="/"
             onClick={closeMobileMenu}
             className="group relative z-[60] flex items-center gap-3"
           >
             <div
-              className={`flex items-center justify-center rounded-full border border-white/15 bg-white/[0.04] backdrop-blur-xl transition-all duration-500 ${
-                scrolled ? "h-8 w-8" : "h-9 w-9"
+              className={`relative flex shrink-0 items-center justify-center overflow-hidden rounded-full border border-white/10 bg-white/[0.04] transition-all duration-500 ${
+                scrolled ? "h-10 w-10" : "h-12 w-12"
               }`}
             >
-              <Music2 size={scrolled ? 14 : 16} strokeWidth={1.5} />
+              <Image
+                src="/images/wefaintnot-full-logo-tp.png"
+                alt="WeFaintNot"
+                fill
+                sizes="36px"
+                className="object-contain p-2 opacity-90 transition duration-300 group-hover:opacity-100"
+              />
             </div>
 
-            <span className="text-sm font-semibold tracking-[0.2em]">
+            <span className="text-sm font-semibold tracking-[0.2em] text-white">
               NANA AMOAH
             </span>
           </Link>
-
-          {/* Desktop Navigation */}
+          {/* =====================================================
+              DESKTOP NAVIGATION
+          ====================================================== */}
           <nav className="hidden items-center gap-8 md:flex">
             {navItems.map((item) => (
               <Link
                 key={item.label}
                 href={item.href}
-                className="text-sm text-white/50 transition-colors duration-300 hover:text-white"
+                className="py-2 text-sm text-white/45 transition-colors duration-300 hover:text-white"
               >
                 {item.label}
               </Link>
             ))}
-          </nav>
 
-          {/* Desktop Listen Button */}
+            <div className="group relative">
+              <button
+                type="button"
+                aria-haspopup="true"
+                className="flex items-center gap-1.5 py-2 text-sm text-white/45 transition-colors duration-300 hover:text-white"
+              >
+                Get Involved
+                <ChevronDown
+                  size={14}
+                  className="transition-transform duration-300 group-hover:rotate-180 group-focus-within:rotate-180"
+                />
+              </button>
+
+              <div className="invisible absolute left-1/2 top-full z-50 w-60 -translate-x-1/2 translate-y-2 pt-3 opacity-0 transition-all duration-200 group-hover:visible group-hover:translate-y-0 group-hover:opacity-100 group-focus-within:visible group-focus-within:translate-y-0 group-focus-within:opacity-100">
+                <div className="rounded-2xl border border-white/10 bg-[#090909]/95 p-2 shadow-2xl backdrop-blur-2xl">
+                  <p className="px-3 pb-2 pt-2 text-[9px] uppercase tracking-[0.25em] text-white/25">
+                    Be Part of the Ministry
+                  </p>
+
+                  {getInvolvedItems.map((item) => (
+                    <Link
+                      key={item.label}
+                      href={item.href}
+                      className="flex items-center justify-between rounded-xl px-3 py-3 text-sm text-white/60 transition hover:bg-white/[0.06] hover:text-white"
+                    >
+                      {item.label}
+                      <ArrowUpRight size={13} className="text-white/25" />
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </nav>
+          {/* =====================================================
+              DESKTOP LISTEN CTA
+          ====================================================== */}
           <Link
             href="/music"
-            className="hidden items-center gap-2 rounded-full border border-white/15 bg-white/[0.06] px-5 py-2.5 text-xs font-medium tracking-wide text-white backdrop-blur-xl transition-all duration-300 hover:border-white/25 hover:bg-white/10 sm:flex"
+            className="group hidden items-center gap-3 rounded-full border border-white/10 bg-white/[0.06] px-5 py-2.5 text-xs font-medium tracking-wide text-white backdrop-blur-xl transition-all duration-300 hover:border-white/20 hover:bg-white/10 md:flex"
           >
-            Listen Now
-            <ArrowUpRight size={14} />
-          </Link>
+            <span>Listen Now</span>
 
-          {/* Mobile Menu Button */}
+            <span className="flex items-center gap-1.5 border-l border-white/10 pl-3 text-white/50 transition-colors group-hover:text-white">
+              <FaYoutube size={12} />
+              <FaSpotify size={12} />
+              <FaApple size={12} />
+              <FaDeezer size={13} />
+            </span>
+
+            <ArrowUpRight
+              size={13}
+              className="text-white/30 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-white"
+            />
+          </Link>
+          {/* =====================================================
+              MOBILE MENU BUTTON
+          ====================================================== */}
           <button
             type="button"
             aria-label={
@@ -117,12 +213,12 @@ export default function Navbar() {
             }
             aria-expanded={mobileMenuOpen}
             onClick={() => setMobileMenuOpen((prev) => !prev)}
-            className="relative z-[60] flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-white backdrop-blur-xl transition hover:bg-white/10 md:hidden"
+            className="relative z-[60] flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-white backdrop-blur-xl transition hover:border-white/20 hover:bg-white/10 md:hidden"
           >
             {mobileMenuOpen ? (
-              <X size={20} strokeWidth={1.5} />
+              <X size={19} strokeWidth={1.4} />
             ) : (
-              <Menu size={20} strokeWidth={1.5} />
+              <Menu size={19} strokeWidth={1.4} />
             )}
           </button>
         </div>
@@ -138,30 +234,26 @@ export default function Navbar() {
             : "pointer-events-none opacity-0"
         }`}
       >
-        {/* Ambient lighting */}
+        {/* Ambient Lighting */}
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
-          {/* Purple */}
           <div
             className={`absolute -left-32 top-10 h-80 w-80 rounded-full bg-purple-700/20 blur-[130px] transition-transform duration-1000 ${
               mobileMenuOpen ? "scale-100" : "scale-75"
             }`}
           />
 
-          {/* Blue */}
           <div
             className={`absolute -right-32 top-1/3 h-96 w-96 rounded-full bg-blue-600/15 blur-[140px] transition-transform duration-1000 ${
               mobileMenuOpen ? "scale-100" : "scale-75"
             }`}
           />
 
-          {/* Green */}
           <div
             className={`absolute bottom-0 left-1/4 h-72 w-72 rounded-full bg-emerald-500/10 blur-[130px] transition-transform duration-1000 ${
               mobileMenuOpen ? "scale-100" : "scale-75"
             }`}
           />
 
-          {/* Gold */}
           <div
             className={`absolute bottom-[-100px] right-[-80px] h-80 w-80 rounded-full bg-amber-500/10 blur-[130px] transition-transform duration-1000 ${
               mobileMenuOpen ? "scale-100" : "scale-75"
@@ -169,12 +261,12 @@ export default function Navbar() {
           />
         </div>
 
-        {/* Subtle grid */}
+        {/* Subtle Grid */}
         <div className="pointer-events-none absolute inset-0 opacity-[0.025] [background-image:linear-gradient(rgba(255,255,255,.8)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.8)_1px,transparent_1px)] [background-size:70px_70px]" />
 
-        {/* Menu content */}
+        {/* Mobile Content */}
         <div className="relative flex h-full flex-col px-7 pb-8 pt-32">
-          {/* Label */}
+          {/* Mobile Header */}
           <div
             className={`mb-10 flex items-center gap-3 transition-all delay-100 duration-500 ${
               mobileMenuOpen
@@ -189,7 +281,7 @@ export default function Navbar() {
             </span>
           </div>
 
-          {/* Navigation links */}
+          {/* Navigation Links */}
           <nav className="flex flex-col">
             {navItems.map((item, index) => (
               <Link
@@ -205,20 +297,70 @@ export default function Navbar() {
                   transitionDelay: `${150 + index * 70}ms`,
                 }}
               >
-                <span className="text-4xl font-light tracking-tight text-white/85 transition group-hover:text-white">
+                <span className="text-3xl font-light tracking-tight text-white/85 transition-colors group-hover:text-white">
                   {item.label}
                 </span>
 
                 <ArrowUpRight
                   size={20}
-                  strokeWidth={1.5}
-                  className="text-white/25 transition group-hover:text-white"
+                  strokeWidth={1.4}
+                  className="text-white/20 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-white"
                 />
               </Link>
             ))}
+            <div
+              className={`border-b border-white/[0.07] transition-all duration-500 ${
+                mobileMenuOpen
+                  ? "translate-y-0 opacity-100"
+                  : "translate-y-8 opacity-0"
+              }`}
+              style={{ transitionDelay: "430ms" }}
+            >
+              <button
+                type="button"
+                aria-expanded={involvedOpen}
+                onClick={() => setInvolvedOpen((prev) => !prev)}
+                className="flex w-full items-center justify-between py-5 text-left"
+              >
+                <span className="text-3xl font-light tracking-tight text-white/85">
+                  Get Involved
+                </span>
+
+                <ChevronDown
+                  size={20}
+                  strokeWidth={1.4}
+                  className={`text-white/40 transition-transform duration-300 ${
+                    involvedOpen ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+
+              <div
+                className={`grid transition-all duration-300 ${
+                  involvedOpen
+                    ? "grid-rows-[1fr] opacity-100"
+                    : "grid-rows-[0fr] opacity-0"
+                }`}
+              >
+                <div className="overflow-hidden">
+                  {getInvolvedItems.map((item) => (
+                    <Link
+                      key={item.label}
+                      href={item.href}
+                      onClick={closeMobileMenu}
+                      tabIndex={involvedOpen ? 0 : -1}
+                      className="flex items-center justify-between py-3 pl-4 text-base text-white/50 transition hover:text-white"
+                    >
+                      {item.label}
+                      <ArrowUpRight size={15} className="text-white/25" />
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
           </nav>
 
-          {/* Listen CTA */}
+          {/* Mobile Listen CTA */}
           <div
             className={`mt-8 transition-all delay-[450ms] duration-500 ${
               mobileMenuOpen
@@ -229,60 +371,38 @@ export default function Navbar() {
             <Link
               href="/music"
               onClick={closeMobileMenu}
-              className="flex w-full items-center justify-center gap-3 rounded-full bg-white py-4 text-sm font-semibold text-black transition hover:bg-white/90"
+              className="group flex w-full items-center justify-center gap-3 rounded-full bg-white py-4 text-sm font-semibold text-black transition hover:bg-white/90"
             >
-              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-black text-white">
-                <Music2 size={13} strokeWidth={1.5} />
-              </span>
               Listen Now
               <span className="flex items-center gap-2 border-l border-black/10 pl-3">
-                <FaYoutube size={13} />
-                <FaSpotify size={13} />
-                <FaApple size={13} />
-                <FaDeezer size={14} />
+                {platforms.map(({ label, icon: Icon }) => (
+                  <Icon key={label} size={label === "Deezer" ? 14 : 13} />
+                ))}
               </span>
+              <ArrowUpRight
+                size={14}
+                className="text-black/40 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5"
+              />
             </Link>
           </div>
 
-          {/* Bottom */}
+          {/* Bottom Socials */}
           <div className="mt-auto flex items-center justify-between">
             <div className="flex items-center gap-5 text-white/30">
-              <a
-                href="https://www.instagram.com/nanaamoahh/"
-                target="_blank"
-                aria-label="Instagram"
-                className="transition-colors duration-300 hover:text-white"
-              >
-                <FaInstagram size={16} />
-              </a>
-
-              <a
-                href="https://x.com/nanaamoahh_"
-                target="_blank"
-                aria-label="X"
-                className="transition-colors duration-300 hover:text-white"
-              >
-                <FaXTwitter size={17} />
-              </a>
-
-              <a
-                href="https://facebook.com/nanakwadwo.amoah"
-                target="_blank"
-                aria-label="Facebook"
-                className="transition-colors duration-300 hover:text-white"
-              >
-                <FaFacebookF size={15} />
-              </a>
-
-              <a
-                href="https://www.tiktok.com/@nanaamoahh"
-                target="_blank"
-                aria-label="TikTok"
-                className="transition-colors duration-300 hover:text-white"
-              >
-                <FaTiktok size={15} />
-              </a>
+              {socials.map(({ label, href, icon: Icon }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="transition-colors duration-300 hover:text-white"
+                >
+                  <Icon size={label === "X" ? 17 : 15} />
+                </a>
+              ))}
             </div>
+
             <span className="text-[9px] uppercase tracking-[0.3em] text-white/20">
               Faith • Music • Purpose
             </span>

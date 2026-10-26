@@ -17,6 +17,7 @@ import {
   ExternalLink,
   Users,
   MessageCircleHeart,
+  MessageSquareQuote,
 } from "lucide-react";
 
 const navigation = [
@@ -37,6 +38,11 @@ const navigation = [
         name: "Prayer Requests",
         href: "/admin/prayer-requests",
         icon: MessageCircleHeart,
+      },
+      {
+        name: "Testimonies",
+        href: "/admin/testimonies",
+        icon: MessageSquareQuote,
       },
       {
         name: "Manage Users",
